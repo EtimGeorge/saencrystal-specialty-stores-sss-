@@ -1,0 +1,65 @@
+
+
+
+/* Basic styles for the stock monitoring page */
+
+
+main {
+  padding: 20px;
+  
+}
+
+.stock-monitoring h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.stock-levels table {
+  width: 100%;
+  border-collapse: collapse;
+  /* border: 1px solid var(--primary-color); */
+  background-color: var(--second-background-color);
+  color: var(--secondary-color);
+  box-shadow: 0 2px 4px var(--shadow-color-2);
+}
+
+.stock-levels th, .stock-levels td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.stock-levels th {
+  background-color: var(--second-background-color);
+  color: var(--primary-color);
+}
+
+.stock-levels tbody tr{
+  background-color: var(--background-color);
+}
+
+.stock-levels tbody tr:hover {
+  background-color: var(--second-background-color);
+}
+
+.stock-levels .low-stock {
+  color: var(--danger-color);
+  font-weight: bold;
+  background-color: var(--light-color);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.stock-levels .normal-stock {
+  color: var(--active-color) ;
+  font-weight: bold;
+  background-color: var(--light-color);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  
+}

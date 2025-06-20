@@ -1,0 +1,286 @@
+/* Basic styles for the customer feedback page */
+
+main {
+  padding: 20px;
+}
+
+.customer-feedback h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.feedback-filters {
+  margin-bottom: 20px;
+}
+
+.feedback-filters button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.feedback-filters button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: background-color 0.5s;
+}
+
+.feedbacks table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--second-background-color);
+  box-shadow: 0 2px 4px var(--box-shadow-color);
+}
+
+.feedbacks th, .feedbacks td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.feedbacks th {
+  background-color: var(--second-background-color);
+  color: var(--primary-color);
+}
+
+.feedbacks td {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+}
+
+.feedbacks td.rating {
+  font-size: 20px;
+  font-weight: 600;  
+}
+
+
+
+.feedbacks tbody tr:hover {
+  background-color: var(--second-background-color);
+}
+
+.action-button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.action-button.view {
+  background-color: var(--view-color);
+  color: var(--primary-color);
+  transition: background-color 0.5s;
+}
+
+.action-button.view:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: background-color 0.5s;
+}
+
+.action-button.delete {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  transition: background-color 0.5s;
+}
+
+.action-button.delete:hover {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+  transition: background-color 0.5s;
+}
+
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  color: var(--primary-color);
+  background-color: var(--second-background-color);
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 500px;
+  
+  border-radius: 5px;
+}
+
+.close {
+  color: var(--primary-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#confirmDelete, #cancelDelete {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#confirmDelete {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  transition: background-color 0.5s;
+}
+
+#confirmDelete:hover, #confirmDelete:focus {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+  transition: background-color 0.5s;
+}
+
+#cancelDelete {
+  background-color: var(--view-color);
+  color: var(--primary-color);
+  transition: background-color 0.5s;
+}
+
+#cancelDelete:hover, #cancelDelete:focus {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: background-color 0.5s ;
+}
+
+/* Media Queries */
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+  main {
+      padding: 10px;
+  }
+
+  .customer-feedback h1 {
+      font-size: 20px;
+  }
+
+  .feedback-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .feedback-filters button {
+      margin: 5px;
+      padding: 8px 15px;
+      font-size: 14px;
+  }
+
+  .feedbacks table {
+      font-size: 14px;
+  }
+
+  .feedbacks th, .feedbacks td {
+      padding: 8px;
+  }
+
+  .action-button {
+      padding: 4px 8px;
+      font-size: 12px;
+  }
+
+  .modal-content {
+      width: 95%;
+      margin: 10% auto;
+  }
+}
+
+/* Small tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  main {
+      padding: 15px;
+  }
+
+  .customer-feedback h1 {
+      font-size: 22px;
+  }
+
+  .feedback-filters button {
+      margin: 5px;
+      padding: 9px 18px;
+      font-size: 15px;
+  }
+
+  .feedbacks table {
+      font-size: 15px;
+  }
+
+  .feedbacks th, .feedbacks td {
+      padding: 10px;
+  }
+
+  .action-button {
+      padding: 5px 10px;
+      font-size: 13px;
+  }
+
+  .modal-content {
+      width: 90%;
+      margin: 12% auto;
+  }
+}
+
+/* Large tablets */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  main {
+      padding: 20px;
+  }
+
+  .customer-feedback h1 {
+      font-size: 24px;
+  }
+
+  .feedback-filters button {
+      margin: 6px;
+      padding: 10px 20px;
+      font-size: 16px;
+  }
+
+  .feedbacks table {
+      font-size: 16px;
+  }
+
+  .feedbacks th, .feedbacks td {
+      padding: 12px;
+  }
+
+  .action-button {
+      padding: 6px 12px;
+      font-size: 14px;
+  }
+
+  .modal-content {
+      width: 80%;
+      margin: 15% auto;
+  }
+}
+
+/* ... (existing styles) ... */

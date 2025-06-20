@@ -1,0 +1,137 @@
+/* css/cart.css */
+
+.cart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.cart-page h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cart-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.cart-items {
+  flex: 2;
+}
+
+.cart-item {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.item-price {
+  font-weight: bold;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.item-quantity button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.item-quantity input {
+  width: 40px;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+.cart-summary {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.cart-summary h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.summary-item.total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+#checkout-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#checkout-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .cart-container {
+      flex-direction: column;
+  }
+
+  .cart-summary {
+      order: -1;
+      margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cart-page {
+      padding: 1rem;
+  }
+
+  .cart-item {
+      flex-direction: column;
+  }
+
+  .cart-item img {
+      width: 100%;
+      height: auto;
+      margin-right: 0;
+      margin-bottom: 1rem;
+  }
+}

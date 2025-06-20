@@ -1,0 +1,293 @@
+ /* Your existing CSS */
+        /* Basic styles for the promotional management page */
+        main {
+          padding: 20px;
+      }
+
+      .promotional-management h1 {
+          margin-bottom: 20px;
+          font-size: 24px;
+          color: var(--primary-color);
+      }
+
+      .promo-filters {
+          margin-bottom: 20px;
+      }
+
+      .promo-filters button {
+          padding: 10px 20px;
+          margin-right: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: var(--secondary-color);
+          color: var(--primary-color);
+          cursor: pointer;
+          transition: background-color 0.5s;
+      }
+
+      .promo-filters button:hover {
+          background-color: var(--primary-color);
+          color: var(--secondary-color);
+      }
+
+      .promotions table {
+          width: 100%;
+          border-collapse: collapse;
+          background-color: var(--background-color);
+          box-shadow: 0 2px 4px var(--box-shadow);
+      }
+
+      .promotions th, .promotions td {
+          padding: 12px;
+          text-align: left;
+          border-bottom: 1px solid var(--primary-color);
+      }
+
+      .promotions th {
+          background-color: var(--second-background-color);
+          color: var(--primary-color);
+      }
+
+      .promotions tbody tr {
+          color: var(--secondary-color);
+          background-color: var(--background-color);
+          transition: background-color 0.5s;
+      }
+
+      .promotions tbody tr:hover {
+          background-color: var(--second-background-color);
+      }
+
+      .action-button {
+          padding: 5px 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-right: 5px;
+      }
+
+      .action-button.edit {
+          background-color: var(--primary-color);
+          color: var(--secondary-color);
+      }
+
+      .action-button.edit:hover {
+          background-color: var(--secondary-color);
+          color: var(--primary-color);
+          transition: background-color 0.5s;
+      }
+
+      .action-button.delete {
+          background-color: var(--secondary-color);
+          color: var(--white-color);
+      }
+
+      .action-button.delete:hover {
+          background-color: var(--danger-color);
+          color: var(--white-color);
+          transition: background-color 0.5s;
+      }
+
+      .add-promo {
+          margin-top: 30px;
+      }
+
+      .add-promo h2 {
+          margin-bottom: 15px;
+          font-size: 20px;
+          color: var(--primary-color);
+      }
+
+      .add-promo form {
+          display: flex;
+          flex-direction: column;
+      }
+
+      .add-promo form label {
+          margin-bottom: 5px;
+          color: var(--primary-color);
+      }
+
+      .add-promo form input,
+      .add-promo form textarea,
+      .add-promo form select {
+          background-color: var(--second-background-color);
+          color: var(--secondary-color);
+          margin-bottom: 15px;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+      }
+
+      .add-promo form input:focus,
+      .add-promo form textarea:focus,
+      .add-promo form select:focus {
+          outline: none;
+          border: 1px solid var(--secondary-color);
+          box-shadow: 0 0 0 0.1px var(--box-shadow-2);
+      }
+
+      .add-promo form button {
+          padding: 10px;
+          border: none;
+          background-color: var(--secondary-color);
+          color: var(--primary-color);
+          cursor: pointer;
+          border-radius: 4px;
+          font-size: 16px;
+          transition: background-color 0.3s;
+      }
+
+      .add-promo form button:hover {
+          background-color: var(--primary-color);
+          color: var(--secondary-color);
+          transition: background-color 0.5s;
+      }
+
+      /* Modal styles */
+      .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0,0,0,0.4);
+      }
+
+      .modal-content {
+          background-color: var(--second-background-color);
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid var(--primary-color);
+          width: 80%;
+          max-width: 500px;
+          border-radius: 5px;
+          color: var(--primary-color);
+      }
+
+      .close {
+        background-color: var(--secondary-color);
+          color: var(--primary-color);
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: var(--secondary-color);
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      /* Add styles for datetime-local inputs */
+      input[type="datetime-local"] {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 10px;
+          border: 1px solid var(--primary-color);
+          border-radius: 4px;
+          background-color: var(--background-color);
+          color: var(--secondary-color);
+      }
+
+      input[type="text"] {
+        background-color: var(--background-color);
+        color: var(--secondary-color);
+
+      }
+
+      textarea, select, textarea{
+        background-color: var(--background-color);
+        color: var(--secondary-color);
+      }
+
+      button#cancelDelete{
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        border: none;
+        border-radius: 5px;
+      }
+
+      button#cancelDelete:hover{
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+      }
+
+      button#confirmDelete{
+        background-color: var(--secondary-color);
+        color: var(--white-color);
+        border: none;
+        border-radius: 5px;
+      }
+
+      button#confirmDelete:hover{
+        background-color: var(--danger-color);
+        color: var(--white-color);
+      }
+
+      /* Style for expired promotions */
+      .expired {
+          opacity: 0.6;
+          background-color: #f8d7da;
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+          /* Small tablet and mobile */
+          .promotions table, .promotions th, .promotions td {
+              font-size: 14px;
+          }
+
+          .add-promo form input,
+          .add-promo form textarea,
+          .add-promo form select {
+              font-size: 14px;
+          }
+
+          .promo-filters button {
+              padding: 8px 16px;
+              font-size: 14px;
+          }
+
+          .action-button {
+              padding: 4px 8px;
+              font-size: 12px;
+          }
+
+          .modal-content {
+              width: 90%;
+              margin: 10% auto;
+          }
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+          /* Big tablet */
+          .promotions table, .promotions th, .promotions td {
+              font-size: 15px;
+          }
+
+          .add-promo form input,
+          .add-promo form textarea,
+          .add-promo form select {
+              font-size: 15px;
+          }
+
+          .promo-filters button {
+              padding: 9px 18px;
+              font-size: 15px;
+          }
+
+          .action-button {
+              padding: 5px 10px;
+              font-size: 14px;
+          }
+
+          .modal-content {
+              width: 70%;
+              margin: 12% auto;
+          }
+      }

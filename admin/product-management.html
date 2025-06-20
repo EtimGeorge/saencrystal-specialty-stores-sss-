@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management | Saencrystal Specialty Stores</title>
+    <link rel="stylesheet" href="../css/admin/admin-styles.css">
+
+    <link rel="stylesheet" href="../css/admin/product-management.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+
+
+    <header>
+        <nav>
+            
+            <div class="logo">
+                <img src="../assets/images/admin/only-logo.png" alt=""><p>saencrystal <highlight-text>specialty</highlight-text> Stores</p> 
+            </div>
+
+            <div class="mobile-nav">
+                
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="menu-cancel" id="menu-cancel">
+                    <i class="fas fa-close"></i>
+                </div>
+
+             <ul class="nav-links" id="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="product-management.html" class="active" >Product Management</a></li>
+                <li><a href="category-management.html"  >Category Management</a></li>
+                <li><a href="stock-monitoring.html">Stock Monitoring</a></li>
+                <li><a href="order-management.html">Order Management</a></li>
+                <li><a href="customer-feedback.html">Customer Feedback</a></li>
+                <li><a href="promotional-management.html">Promotional Management</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+                <li><a href="index.html"><span>Logout</span></a></li>
+                </ul>
+
+                
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <header>
+            <h1>Product Management</h1>
+        </header>
+        <section class="product-list">
+            <h2>Product List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                    <!-- Product rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+        <section class="add-product">
+            <h2>Add New Product</h2>
+            <form id="productForm">
+                <label for="productName">Name:</label>
+                <input type="text" id="productName" name="name" required>
+                <label for="productCategory">Category:</label>
+                <input type="text" id="productCategory" name="category" required>
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" name="price" step="0.01" required>
+                <label for="productStock">Stock:</label>
+                <input type="number" id="productStock" name="stock" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- View Product Modal -->
+    <div id="viewProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>View Product</h2>
+            <div id="viewProductDetails"></div>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Product</h2>
+            <form id="editProductForm">
+                <input type="hidden" id="editProductId">
+                <label for="editProductName">Name:</label>
+                <input type="text" id="editProductName" name="name" required>
+                <label for="editProductCategory">Category:</label>
+                <input type="text" id="editProductCategory" name="category" required>
+                <label for="editProductPrice">Price:</label>
+                <input type="number" id="editProductPrice" name="price" step="0.01" required>
+                <label for="editProductStock">Stock:</label>
+                <input type="number" id="editProductStock" name="stock" required>
+                <button type="submit">Update Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Product Modal -->
+    <div id="deleteProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Delete Product</h2>
+            <p>Are you sure you want to delete this product?</p>
+            <button id="confirmDeleteProduct">Yes, Delete</button>
+            <button id="cancelDeleteProduct">Cancel</button>
+        </div>
+    </div>
+    
+    <script src="../js/admin/nav-active-state.js"></script>
+
+    <script src="../js/admin/admin.js"></script>
+
+    <script src="../js/admin/product-management.js"></script>
+</body>
+</html>

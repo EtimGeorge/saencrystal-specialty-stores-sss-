@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Saencrystal Specialty Stores</title>
+    <link rel="stylesheet" href="../css/client/client-styles.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="../css/client/checkout.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
+            <p>Saencrystal Specialty Stores</p>
+        </div>
+        <nav>
+            <div class="mobile-nav">
+                <div id="menu-toggle" class="menu-toggle">☰</div>
+                <div id="menu-cancel" class="menu-cancel">✕</div>
+            </div>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="../client/products-category.html" >Products</a></li>
+                <li><a href="../client/cart.html" >Cart</a></li>
+                <li><a href="checkout.html" class="active">Checkout</a></li>
+                <li><a href="account-management.html"> Account</a></li>
+                
+                <li><a href="about-us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+        <h1>Checkout</h1>
+        <form id="checkout-form">
+            <section class="shipping-info">
+                <h2>Shipping Information</h2>
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select a country</option>
+
+                        <option value="">Nigeria</option>
+                        <!-- Add more country options here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP Code</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+            </section>
+
+            <section class="payment-info">
+                <h2>Payment Information</h2>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+            </section>
+
+            <section class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="order-items">
+                    <!-- Order items will be dynamically inserted here -->
+                </div>
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="order-total">$0.00</span>
+                </div>
+            </section>
+
+            <button type="submit" id="place-order-btn">Place Order</button>
+        </form>
+    </main>
+
+    <footer>
+        <!-- Footer content will be loaded from a separate file -->
+    </footer>
+
+    <script src="../js/client/client.js"></script>
+
+    <script src="../js/client/nav-active-state.js"></script>
+    <script src="../js/client/checkout.js"></script>
+</body>
+</html>

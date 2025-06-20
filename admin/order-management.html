@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+
+    <link rel="stylesheet" href="../css/admin/order-management.css">
+
+    <link rel="stylesheet" href="../css/admin/admin-styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            
+            <div class="logo">
+                <img src="../assets/images/admin/only-logo.png" alt=""><p>saencrystal <highlight-text>specialty</highlight-text> Stores</p> 
+            </div>
+
+            <div class="mobile-nav">
+                
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="menu-cancel" id="menu-cancel">
+                    <i class="fas fa-close"></i>
+                </div>
+
+             <ul class="nav-links" id="nav-links">
+               
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="product-management.html">Product Management</a></li>
+                <li><a href="category-management.html">Category Management</a></li>
+                <li><a href="stock-monitoring.html">Stock Monitoring</a></li>
+                <li><a href="order-management.html" class="active" >Order Management</a></li>
+                <li><a href="customer-feedback.html">Customer Feedback</a></li>
+                <li><a href="promotional-management.html">Promotional Management</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+                <li><a href="index.html"><span>Logout</span></a></li>
+                </ul>
+
+                
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="order-management">
+            <h1>Order Management</h1>
+            <div class="order-filters">
+                <button id="all-orders">All Orders</button>
+                <button id="pending-orders">Pending</button>
+                <button id="shipped-orders">Shipped</button>
+                <button id="delivered-orders">Delivered</button>
+                <button id="cancelled-orders">Cancelled</button>
+            </div>
+            <div class="orders">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-table-body">
+                        <!-- Orders will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- View Order Modal -->
+    <div id="viewOrderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>View Order</h2>
+            <div id="order-details">
+                <!-- Order details will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Order Modal -->
+    <div id="editOrderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Edit Order</h2>
+            <form id="edit-order-form">
+                <label for="edit-order-id">Order ID:</label>
+                <input type="hidden" id="edit-order-id" name="edit-order-id" readonly>
+
+                <label for="edit-customer-name">Customer Name:</label>
+                <input type="text" id="edit-customer-name" name="edit-customer-name" required>
+
+                <label for="edit-product">Product:</label>
+                <input type="text" id="edit-product" name="edit-product" required>
+
+                <label for="edit-quantity">Quantity:</label>
+                <input type="number" id="edit-quantity" name="edit-quantity" required>
+
+                <label for="edit-total-price">Total Price:</label>
+                <input type="text" id="edit-total-price" name="edit-total-price" required>
+
+                <label for="edit-status">Status:</label>
+                <select id="edit-status" name="edit-status" required>
+                    <option value="Pending">Pending</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+
+                <button type="submit" class="btn">Update Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Order Modal -->
+    <div id="deleteOrderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Delete Order</h2>
+            <p>Are you sure you want to delete this order?</p>
+            <button id="confirm-delete-btn" class="btn">Yes, Delete</button>
+            <button id="cancel-delete-btn" class="btn">Cancel</button>
+        </div>
+    </div>
+
+    <script src="../js/admin/nav-active-state.js" ></script>
+
+    <script src="../js/admin/admin.js"></script>
+
+    <script src="../js/admin/order-management.js"></script>
+
+   
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* css/category.css */
+
+/* Base styles (as before) */
+.category-header {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: var(--background-color);
+  
+}
+
+.category-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.category-header p {
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.category-filters {
+  padding: 1rem;
+  background-color: var(--second-background-color);
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.category-filters h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-card h3 {
+  margin: 0.5rem 0;
+}
+
+.product-card button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+/* Media Queries */
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+  .category-header h1 {
+      font-size: 1.8rem;
+  }
+
+  .product-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+  }
+
+  .category-filters {
+      padding: 0.5rem;
+  }
+
+  .pagination button {
+      padding: 0.3rem 0.6rem;
+  }
+}
+
+/* Small tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .category-header h1 {
+      font-size: 2rem;
+  }
+
+  .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+  }
+}
+
+/* Large tablets */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Larger screens (default styles apply) */

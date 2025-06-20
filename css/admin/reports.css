@@ -1,0 +1,111 @@
+/* General styling */
+main {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.report-filters {
+  margin-bottom: 20px;
+  background-color: var(--second-background-color);
+  color: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 10px;
+}
+
+#reportFilters {
+  display: flex;
+  flex-direction: column;
+}
+
+#reportFilters label {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+#reportFilters select,
+#reportFilters input {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  border: none;
+}
+
+#reportFilters button,
+.report-actions button {
+  padding: 10px;
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+#reportFilters button:hover,
+.report-actions button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: background-color 0.5s;
+}
+
+.report-output {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.report-content {
+  font-size: 16px;
+}
+
+/* Media Queries */
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+  main {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  #reportFilters select,
+  #reportFilters input {
+    font-size: 14px;
+  }
+
+  .report-output {
+    padding: 10px;
+  }
+}
+
+/* Small tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  main {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
+
+/* Large tablets */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  main {
+    padding: 20px;
+  }
+}

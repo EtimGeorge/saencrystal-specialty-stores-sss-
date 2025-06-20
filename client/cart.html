@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Saencrystal Specialty Stores</title>
+    <link rel="stylesheet" href="../css/client/cart.css">
+
+    <link rel="stylesheet" href="../css/client/client-styles.css">
+
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
+            <p>Saencrystal Specialty Stores</p>
+        </div>
+        <nav>
+            <div class="mobile-nav">
+                <div id="menu-toggle" class="menu-toggle">☰</div>
+                <div id="menu-cancel" class="menu-cancel">✕</div>
+            </div>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="../client/index.html" >Home</a></li>
+                <li><a href="../client/products-category.html" >Products</a></li>
+                <li><a href="../client/cart.html" class="active">Cart</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="account-management.html"> Account</a></li>
+                
+                <li><a href="about-us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <h1>Your Shopping Cart</h1>
+        <div class="cart-container">
+            <div class="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="cart-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Tax:</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <button id="checkout-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content will be loaded from a separate file -->
+    </footer>
+
+    <script src="../js/client/client.js"></script>
+    <script src="../js/client/nav-active-state.js"></script>
+    <script src="../js/client/cart.js"></script>
+</body>
+</html>
