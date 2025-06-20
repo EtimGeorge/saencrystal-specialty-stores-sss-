@@ -1,39 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
 /* Custom Properties */
 :root {
-  --white-color:#fff;
-  --primary-color:#d9e721f1;
-  --secondary-color:#ff5722;
-  --light-color:#f4f4f4;
-  --background-color:#030303;
-  --second-background-color:#333;
-  --danger-color:#fc0505;
-  --active-color:#03d703;
-  --view-color:#17a2b8;
-  --body-font-family:'Open Sans', sans-serif;
-  --headings-font-family:
-  --shadow-color:#fefefe77;
-  --shadow-color-2:#d6cdcd53;
-  --toggle-font-size:24px;
-  --acent-color:#e91e63;
-  
- 
-  
-  
+  --white-color: #FFFFFF;
+  --primary-color: #2F4F4F; /* Dark Slate Gray */
+  --primary-color-rgb: 47, 79, 79; /* RGB for Dark Slate Gray */
+  --accent-color: #4CAF50;  /* Modern Green */
+  --accent-color-rgb: 76, 175, 80; /* RGB for Modern Green */
+  --light-color: #F4F6F8;   /* Light Gray for backgrounds */
+  --background-color: #FFFFFF; /* White */
+  --secondary-background-color: #F4F6F8; /* Light Gray */
+  --text-color: #333333; /* Dark Gray for text */
+  --light-text-color: #FFFFFF; /* White for text on dark backgrounds */
+  --border-color: #E0E0E0; /* Light Gray for borders */
+  --danger-color: #E74C3C; /* A modern red for errors/warnings */
+  --active-color: var(--accent-color); /* Use accent for active states */
+  --view-color: #3498DB; /* A modern blue for view/info actions */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color-2: rgba(0, 0, 0, 0.05);
+  --toggle-font-size: 24px;
+  /* Keep --acent-color if used by JS, or replace its usage later */
+  --acent-color: #e91e63; /* Current value, review if needed */
+  --body-font-family: 'Open Sans', sans-serif;
+  --headings-font-family: 'Montserrat', sans-serif;
 }
 
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--body-font-family);
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
-  /* color: var(--second-background-color); */
+  color: var(--text-color); /* Changed from --second-background-color */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--headings-font-family);
+  color: var(--primary-color); /* Using primary color for headings */
 }
 
 header {
-  background-color: var(--second-background-color);
-  color: var(--header-text-color);
+  background-color: var(--secondary-background-color); /* Lighter background for header */
+  color: var(--primary-color); /* Darker text for header */
   padding: 10px 0;
+  border-bottom: 1px solid var(--border-color); /* Add a subtle border */
 }
 
 /* .container {
@@ -54,7 +64,7 @@ header {
   font-weight: bold;
   padding-left: 2em;
   margin: 1em 0 1em 0;
-  color: var(--primary-color);
+  color: var(--primary-color); /* Primary color for logo text */
   text-wrap: nowrap;
 }
 
@@ -79,12 +89,13 @@ header {
   height: 100px; /* Adjust as needed */
   animation: spin-with-pause 31s linear infinite;
 }
-p{
-  font-size: 45px;
+p { /* Adjusting font size for new font */
+   font-size: 32px; /* Slightly smaller for Montserrat */
+   font-family: var(--headings-font-family);
 }
 
 highlight-text{
-  color: var(--secondary-color);
+  color: var(--accent-color); /* Accent color for highlighted part */
 }
 
 
@@ -114,10 +125,10 @@ highlight-text{
   align-items: center;
   gap: 1.5em;
   padding: 1rem;
-  background-color: var(--second-background-color);
+  background-color: var(--secondary-background-color); /* Match header bg */
   width: 95%;
   border-radius: 5px;
-  box-shadow: 0 0 10px var(--shadow-color);
+  box-shadow: 0 2px 4px var(--shadow-color); /* Softer shadow */
   z-index: 100;
   
 }
@@ -133,17 +144,20 @@ highlight-text{
 
 .nav-links a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--primary-color); /* Primary color for nav links */
+  font-family: var(--body-font-family); /* Body font for nav items */
+  font-weight: 600; /* Slightly bolder for nav items */
   font-size: 15px;
   transition: color 0.3s ease;
   text-wrap: wrap;
 }
 
 .nav-links a:hover {
-  color: var(--secondary-color);
+  color: var(--accent-color); /* Accent color on hover */
 }
 
-span{
+/* Removing the generic span styling as it might conflict */
+/* span{
   background-color: var(--secondary-color);
   padding: 10px 15px;
   border-radius: 5px;
@@ -155,7 +169,7 @@ span:hover{
   background-color: var(--primary-color);
   color: var(--secondary-color);
   transition: background-color 0.3s;
-}
+} */
 
 
 
@@ -163,28 +177,13 @@ span:hover{
 
 /* Active nav menu styles */
 .nav-links a.active {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+  background-color: var(--accent-color); /* Accent color for active link */
+  color: var(--light-text-color); /* Light text on accent background */
   position: relative;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-              0 0 20px rgba(255, 255, 255, 0.3),
-              0 0 30px rgba(255, 255, 255, 0.1);
-  animation: glowing 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes glowing {
-  from {
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-                  0 0 20px rgba(255, 255, 255, 0.3),
-                  0 0 30px rgba(255, 255, 255, 0.1);
-  }
-  to {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7),
-                  0 0 40px rgba(255, 255, 255, 0.5),
-                  0 0 60px rgba(255, 255, 255, 0.3);
-  }
+  /* Review and simplify the glowing animation if it clashes with new design */
+  box-shadow: 0 0 8px rgba(var(--accent-color), 0.5);
+  animation: none; /* Removing glowing animation for a cleaner look */
 }
 
 /* Optional: Add transition for smoother effect when becoming active */
@@ -192,15 +191,29 @@ span:hover{
   transition: all 0.3s ease;
 }
 
-
-
-
+button, .btn { /* Assuming .btn is a common class for buttons */
+  background-color: var(--accent-color);
+  color: var(--light-text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+button:hover, .btn:hover {
+  background-color: #3e8e41; /* Darker green for #4CAF50 */
+  color: var(--light-text-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
 
 footer {
-  background-color: var(--footer-bg-color);
-  color: var(--footer-text-color);
+  background-color: var(--primary-color); /* Using primary color for footer bg */
+  color: var(--light-text-color); /* Light text on dark background */
   text-align: center;
-  padding: 10px 0;
+  padding: 20px 0; /* Increased padding */
 }
 
 /* Chat Assistant */
@@ -212,7 +225,7 @@ footer {
 }
 
 #chat-toggle {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -222,8 +235,8 @@ footer {
 
 #chat-box {
   background-color: white;
-  border: 1px solid var(--form-border-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color); /* Use new border color */
+  box-shadow: 0 0 10px var(--shadow-color); /* Use new shadow color */
   border-radius: 10px;
   overflow: hidden;
   width: 300px;
@@ -231,8 +244,8 @@ footer {
 }
 
 #chat-header {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--light-text-color); /* Use light text color */
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -248,20 +261,20 @@ footer {
 #chat-input {
   display: flex;
   padding: 10px;
-  border-top: 1px solid var(--form-border-color);
+  border-top: 1px solid var(--border-color); /* Use new border color */
 }
 
 #chat-input input {
   flex: 1;
   padding: 10px;
-  border: 1px solid var(--form-border-color);
+  border: 1px solid var(--border-color); /* Use new border color */
   border-radius: 5px;
   margin-right: 10px;
 }
 
 #chat-input button {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--light-text-color); /* Use light text color */
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -391,3 +404,312 @@ footer {
     z-index: 1000;
    }
  }
+
+/* === Product Grid & Card Styles (Moved from index.css) === */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.product-card {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: var(--shadow-color-2) 0px 1px 3px 0px, var(--shadow-color-2) 0px 0px 0px 1px;
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-color) 0px 4px 12px 0px;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-family: var(--headings-font-family);
+}
+
+.product-card p { /* Price */
+    font-size: 1em;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: var(--body-font-family);
+}
+/* .btn style for button is already defined and global */
+/* === End of Product Grid & Card Styles === */
+
+/* === Content Page Styles (for About Us, Contact Us, etc.) === */
+.content-page { /* General class for simple text pages */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    max-width: 900px; /* Set a max-width for better readability on wide screens */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em; /* Match category-header h1 */
+}
+
+.content-page p {
+    font-size: 1em; /* Reset p font size if it was changed globally */
+    font-family: var(--body-font-family); /* Ensure body font is used */
+    line-height: 1.7;
+    margin-bottom: 15px;
+    text-align: left; /* Or justify, if preferred */
+}
+
+.content-page h2 {
+   margin-top: 30px; /* Increased top margin for better separation */
+   margin-bottom: 15px; /* Increased bottom margin */
+   font-size: 1.8em; /* Adjusted size */
+   border-bottom: 1px solid var(--border-color); /* Optional: adds a separator */
+   padding-bottom: 5px; /* Space between text and border */
+}
+
+.content-page h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.content-page ul, .content-page ol {
+    margin-bottom: 15px;
+    padding-left: 20px; /* Standard indentation */
+}
+
+.content-page ul li, .content-page ol li {
+    line-height: 1.7;
+    margin-bottom: 8px; /* Space between list items */
+}
+
+.content-page strong {
+    font-weight: 600; /* Or bold, depending on font */
+    color: var(--primary-color); /* Make strong text stand out a bit */
+}
+/* === End of Content Page Styles === */
+
+/* === Contact Form Styles === */
+.contact-form-styled .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form-styled label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color); /* Consistent with other labels */
+    font-family: var(--body-font-family);
+}
+
+.contact-form-styled input[type="text"],
+.contact-form-styled input[type="email"],
+.contact-form-styled textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--body-font-family);
+    font-size: 1em;
+    box-sizing: border-box; /* Important for width 100% */
+    background-color: var(--white-color);
+    color: var(--text-color);
+}
+
+.contact-form-styled input[type="text"]:focus,
+.contact-form-styled input[type="email"]:focus,
+.contact-form-styled textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb, 47, 79, 79), 0.2); /* Assuming primary color is Dark Slate Gray and creating an RGB version for shadow */
+    outline: none;
+}
+
+
+.contact-form-styled textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+/* .btn style is already global and applies to the submit button */
+
+.contact-info { /* For displaying address, phone etc. */
+   margin-top: 40px; /* More space above contact info */
+   padding-top: 30px;
+   border-top: 1px solid var(--border-color);
+}
+
+.contact-info h2 { /* Re-style h2 if it was changed by .content-page h2 */
+    font-size: 1.8em;
+    border-bottom: none; /* Remove border if .content-page h2 added one */
+    margin-bottom: 15px;
+    padding-bottom: 0;
+}
+.contact-info h3 {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+   margin-bottom: 10px;
+   font-size: 1em; /* Ensure consistent font size */
+   line-height: 1.6;
+}
+.contact-info p strong { /* Make labels within contact info stand out */
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+/* === End of Contact Form Styles === */
+
+/* === Footer Link Styles === */
+.footer-links {
+    margin-top: 15px; /* Increased space from copyright */
+    padding-top: 15px; /* Increased space from border */
+    border-top: 1px solid var(--light-color); /* Use light-color for border on primary-color bg */
+    text-align: center;
+}
+.footer-links h4 {
+    font-size: 1.1em;
+    margin-bottom: 10px; /* Increased space below heading */
+    color: var(--light-text-color);
+    font-weight: 600; /* Make heading bolder */
+}
+.footer-links a {
+    color: var(--light-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.95em; /* Slightly larger for better readability */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--white-color); /* Brighter hover for links */
+    text-decoration: underline;
+}
+
+/* Adjust main footer padding if needed */
+footer { /* Ensure existing footer selector is targeted if it's just 'footer' */
+   padding-top: 10px; /* Remove direct padding from footer if .container handles it */
+   padding-bottom: 10px;
+}
+footer .container { /* This rule might already exist or might need adjustment */
+   padding-top: 20px; /* Ensure container inside footer has padding */
+   padding-bottom: 20px;
+}
+/* === End of Footer Link Styles === */
+
+/* === Navigation Dropdown Menu Styles === */
+.nav-links .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secondary-background-color);
+    box-shadow: 0 8px 16px 0px var(--shadow-color);
+    z-index: 1001;
+    min-width: 220px;
+    border-radius: 0 0 5px 5px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--border-color); /* Added border for definition */
+    border-top: none; /* Top border is handled by parent or not needed */
+}
+
+.nav-links .dropdown-menu li a {
+    color: var(--primary-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    font-weight: normal; /* Override bolder nav-links a if needed */
+}
+
+.nav-links .dropdown-menu li a:hover {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+}
+
+.nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-arrow {
+    font-size: 0.8em;
+    margin-left: 5px;
+    transition: transform 0.3s ease; /* Add transition for arrow */
+}
+
+.nav-links .dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg); /* Rotate arrow on hover */
+}
+
+@media (max-width: 768px) {
+    .nav-links .dropdown {
+        display: block; /* Make dropdown take full width if nav items stack */
+        width: 100%;
+    }
+    .nav-links .dropdown > a { /* Target the main dropdown link */
+        display: flex; /* Allows space-between for arrow */
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .nav-links .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        /* border-top: 1px solid var(--border-color); already present */
+        width: 100%; /* Full width for mobile dropdown */
+    }
+    .nav-links .dropdown-menu li a {
+        padding-left: 30px; /* Indent mobile dropdown items */
+    }
+    .nav-links .dropdown:hover .dropdown-arrow {
+        transform: rotate(0deg); /* Reset arrow rotation or handle with JS for click */
+    }
+    /* If mobile nav is click-based, JS would toggle .dropdown-menu display block/none */
+}
+/* === End of Navigation Dropdown Menu Styles === */
+
+/* === Cart Badge Styles === */
+.cart-badge {
+    background-color: var(--accent-color); /* Or var(--danger-color) */
+    color: var(--light-text-color);
+    padding: 2px 6px;
+    font-size: 0.8em;
+    border-radius: 10px; /* Make it a little pill shape */
+    margin-left: 5px;
+    font-weight: bold;
+    vertical-align: top; /* Align with top of text if needed */
+}
+/* === End of Cart Badge Styles === */

@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Category - Saencrystal Specialty Stores</title>
+    <title>Grocery & Food - Saencrystal Specialty Stores</title>
     <link rel="stylesheet" href="../css/client/client-styles.css">
     <link rel="stylesheet" href="../css/client/products-category.css">
-    <!-- Removed links to component-specific and old category.css files -->
-    <!-- <link rel="stylesheet" href="../css/components/header.css"> -->
-    <!-- <link rel="stylesheet" href="../css/components/footer.css"> -->
-    <!-- <link rel="stylesheet" href="../css/components/product-card.css"> -->
-    <!-- <link rel="stylesheet" href="../css/category.css"> -->
 </head>
 <body>
     <header>
@@ -25,7 +20,7 @@
             </div>
             <ul id="nav-links" class="nav-links">
                 <li><a href="../index.html" >Home</a></li>
-                <li><a href="products-category.html" class="active">Shop All</a></li>
+                <li><a href="products-category.html">Shop All</a></li>
 
                 <li class="dropdown">
                     <a href="#">Departments <span class="dropdown-arrow">▼</span></a>
@@ -52,8 +47,8 @@
 
     <main>
         <section class="category-header container">
-            <h1>Our Products</h1>
-            <p>Discover our selection of high-quality items.</p>
+            <h1>Grocery & Food</h1>
+            <p>Stock your pantry with our wide selection of groceries and food items.</p>
         </section>
 
         <div class="container product-page-container">
@@ -61,19 +56,24 @@
                 <h2>Filter By</h2>
                 <div class="filter-controls">
                     <div class="filter-group">
-                        <label for="category-select">Category:</label>
-                        <select id="category-select" name="category">
-                            <option value="">All</option>
-                            <option value="baking">Baking Supplies</option>
-                            <option value="groceries">Groceries</option>
-                            <option value="health">Health & Beauty</option>
-                            <option value="appliances">Small Appliances</option>
-                        </select>
+                        <h3>Category</h3>
+                        <ul>
+                            <li><a href="#">Fresh Produce</a></li>
+                            <li><a href="#">Dry Goods</a></li>
+                            <li><a href="#">Beverages</a></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Brand</h3>
+                        <ul>
+                            <li><a href="#">Brand A</a></li>
+                            <li><a href="#">Brand B</a></li>
+                        </ul>
                     </div>
                     <div class="filter-group">
                         <label for="price-range">Price Range:</label>
-                        <input type="range" id="price-range" name="price" min="0" max="100000" value="50000">
-                        <span id="price-value">₦50000</span>
+                        <input type="range" id="price-range" name="price" min="0" max="50000" value="25000">
+                        <span id="price-value">₦25000</span>
                     </div>
                     <div class="filter-group">
                         <label for="sort-by">Sort by:</label>
@@ -90,36 +90,41 @@
             <section class="product-listing-area">
                 <div class="product-grid">
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Awesome+Product+1" alt="Awesome Product 1">
-                        <h3>Awesome Product 1</h3>
-                        <p>₦15,000.00</p>
-                        <button class="btn" onclick="addToCart('prod_awesome1', 'Awesome Product 1', '₦15,000.00', 'https://via.placeholder.com/200.png?text=Awesome+Product+1')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Fresh+Tomatoes" alt="Fresh Tomatoes (1kg)">
+                        <h3>Fresh Tomatoes (1kg)</h3>
+                        <p>₦1,500.00</p>
+                        <button class="btn" onclick="addToCart('gf_tomatoes_1kg', 'Fresh Tomatoes (1kg)', '₦1,500.00', 'https://via.placeholder.com/200.png?text=Fresh+Tomatoes')">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Great+Item+2" alt="Great Item 2">
-                        <h3>Great Item 2</h3>
-                        <p>₦25,000.00</p>
-                        <button class="btn" onclick="addToCart('prod_great2', 'Great Item 2', '₦25,000.00', 'https://via.placeholder.com/200.png?text=Great+Item+2')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Bag+of+Rice" alt="Bag of Rice (5kg)">
+                        <h3>Bag of Rice (5kg)</h3>
+                        <p>₦8,500.00</p>
+                        <button class="btn" onclick="addToCart('gf_rice_5kg', 'Bag of Rice (5kg)', '₦8,500.00', 'https://via.placeholder.com/200.png?text=Bag+of+Rice')">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Fantastic+Choice+3" alt="Fantastic Choice 3">
-                        <h3>Fantastic Choice 3</h3>
-                        <p>₦10,500.00</p>
-                        <button class="btn" onclick="addToCart('prod_fantastic3', 'Fantastic Choice 3', '₦10,500.00', 'https://via.placeholder.com/200.png?text=Fantastic+Choice+3')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Whole+Chicken" alt="Whole Chicken (Frozen)">
+                        <h3>Whole Chicken (Frozen)</h3>
+                        <p>₦4,200.00</p>
+                        <button class="btn" onclick="addToCart('gf_chicken_frozen', 'Whole Chicken (Frozen)', '₦4,200.00', 'https://via.placeholder.com/200.png?text=Whole+Chicken')">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Super+Deal+4" alt="Super Deal 4">
-                        <h3>Super Deal 4</h3>
-                        <p>₦45,000.00</p>
-                        <button class="btn" onclick="addToCart('prod_super4', 'Super Deal 4', '₦45,000.00', 'https://via.placeholder.com/200.png?text=Super+Deal+4')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Cooking+Oil" alt="Cooking Oil (1L)">
+                        <h3>Cooking Oil (1L)</h3>
+                        <p>₦3,000.00</p>
+                        <button class="btn" onclick="addToCart('gf_oil_1l', 'Cooking Oil (1L)', '₦3,000.00', 'https://via.placeholder.com/200.png?text=Cooking+Oil')">Add to Cart</button>
                     </div>
-                    <!-- Add more product cards as needed -->
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Orange+Juice" alt="Orange Juice (1L)">
+                        <h3>Orange Juice (1L)</h3>
+                        <p>₦1,200.00</p>
+                        <button class="btn" onclick="addToCart('gf_juice_1l', 'Orange Juice (1L)', '₦1,200.00', 'https://via.placeholder.com/200.png?text=Orange+Juice')">Add to Cart</button>
+                    </div>
                 </div>
             </section>
         </div>
 
         <section class="pagination container">
-            <!-- Pagination controls will be added here -->
+            <!-- Pagination controls will be added here if needed -->
         </section>
     </main>
 
@@ -136,10 +141,7 @@
     </footer>
 
     <script src="../js/client/client.js"></script>
-
     <!-- <script src="../js/client/nav-active-state.js"></script> -->
-
-    <script src="../js/components/search.js"></script>
-    <script src="../js/client/product-category.js"></script>
+    <!-- Specific department page JS can be added if needed -->
 </body>
 </html>

@@ -1,118 +1,172 @@
-/* css/category.css */
+/* Products Category Page Specific Styles */
 
-/* Base styles (as before) */
+/* Main page layout */
+.product-page-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow sidebar to stack on smaller screens */
+    gap: 20px;
+    padding-top: 20px; /* Add some space above content */
+    padding-bottom: 20px; /* Add some space below content */
+}
+
+.filter-sidebar {
+    flex: 0 0 250px; /* Sidebar width, don't grow, don't shrink beyond content */
+    background-color: var(--secondary-background-color);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    height: fit-content; /* Make sidebar only as tall as its content */
+}
+
+.product-listing-area {
+    flex: 1; /* Takes remaining space */
+    min-width: 0; /* Prevent flex item overflow */
+}
+
+/* Section header within the page */
 .category-header {
-  text-align: center;
-  padding: 2rem 0;
-  background-color: var(--background-color);
-  
+    padding-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
 }
 
 .category-header h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 0.3em;
 }
 
 .category-header p {
-  font-size: 1rem;
-  color: var(--secondary-color);
+    font-size: 1.1em;
+    color: var(--text-color);
 }
 
-.category-filters {
-  padding: 1rem;
-  background-color: var(--second-background-color);
-  color: var(--primary-color);
-  margin-bottom: 2rem;
+/* Filter controls styling */
+.filter-sidebar h2 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.category-filters h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+.filter-controls .filter-group {
+    margin-bottom: 20px;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 0 1rem;
+.filter-controls .filter-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color); /* Changed from --primary-color for less emphasis */
+    font-size: 0.95em;
 }
 
+.filter-controls .filter-group select,
+.filter-controls .filter-group input[type="range"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--body-font-family);
+    font-size: 0.9em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.filter-controls .filter-group input[type="range"] {
+    padding: 0; /* Range input typically doesn't need vertical padding */
+}
+
+#price-value {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: var(--primary-color);
+    margin-top: 5px;
+}
+
+/* Style for category list if it were links instead of select */
+.filter-group ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.filter-group ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 6px 0;
+    display: block;
+    font-size: 0.9em;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.filter-group ul li a:hover {
+    color: var(--accent-color);
+    background-color: var(--white-color); /* Slight background on hover */
+}
+
+
+/* Pagination section (basic styling for now) */
 .pagination {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 0;
+    text-align: center;
+    padding: 30px 0;
 }
 
-.product-card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  text-align: center;
+.pagination a, .pagination span {
+    margin: 0 5px;
+    padding: 8px 15px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.product-card img {
-  max-width: 100%;
-  height: auto;
+.pagination a:hover,
+.pagination span.current {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    border-color: var(--accent-color);
 }
 
-.product-card h3 {
-  margin: 0.5rem 0;
+.pagination span.disabled {
+    color: var(--border-color);
+    cursor: not-allowed;
 }
 
-.product-card button {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+
+/* Ensure product grid and card styles from index.css are effective */
+/* .product-grid and .product-card styles are defined in css/client/index.css */
+/* If any overrides are needed, they can be added here, but ideally, they are generic enough. */
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Adjust breakpoint as needed */
+    .filter-sidebar {
+        flex: 0 0 200px; /* Slightly smaller sidebar */
+    }
 }
 
-.product-card button:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+@media (max-width: 768px) {
+    .product-page-container {
+        flex-direction: column; /* Stack sidebar on top of products */
+    }
+
+    .filter-sidebar {
+        flex: 1 1 100%; /* Full width for sidebar */
+        margin-bottom: 20px;
+    }
 }
 
-/* Media Queries */
-
-/* Mobile devices */
-@media screen and (max-width: 480px) {
-  .category-header h1 {
-      font-size: 1.8rem;
-  }
-
-  .product-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-  }
-
-  .category-filters {
-      padding: 0.5rem;
-  }
-
-  .pagination button {
-      padding: 0.3rem 0.6rem;
-  }
+@media (max-width: 480px) {
+    .category-header h1 {
+        font-size: 2em;
+    }
+    .category-header p {
+        font-size: 1em;
+    }
+    .filter-sidebar h2 {
+        font-size: 1.3em;
+    }
 }
-
-/* Small tablets */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .category-header h1 {
-      font-size: 2rem;
-  }
-
-  .product-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-  }
-}
-
-/* Large tablets */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .product-grid {
-      grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Larger screens (default styles apply) */
