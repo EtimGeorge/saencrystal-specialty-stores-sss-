@@ -1,108 +1,163 @@
-/* css/product-detail.css */
-
-.product-detail {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+/* In css/client/product-details.css */
+.product-detail-page { /* Uses .container for width control */
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-.product-image {
-  flex: 1;
-  max-width: 50%;
+.product-main-layout {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px;
 }
 
-.product-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+.product-image-gallery {
+    flex: 1 1 400px; /* Flex properties for responsiveness */
+    max-width: 500px; /* Max width for image area */
+}
+.product-image-gallery #main-product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+/* Styles for thumbnails if implemented
+.product-image-gallery .thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.product-image-gallery .thumbnail-img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    cursor: pointer;
+}
+.product-image-gallery .thumbnail-img.active {
+    border-color: var(--accent-color);
+}
+*/
+
+.product-info-details {
+    flex: 1 1 300px; /* Flex properties */
+}
+.product-info-details #product-name {
+    font-size: 2.2em; /* Larger product name */
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-family: var(--headings-font-family);
+}
+.product-info-details #product-price {
+    font-size: 1.8em;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: var(--body-font-family); /* Price can use body font for clarity */
+}
+.product-info-details #product-description {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+}
+.product-info-details #product-options .form-group {
+    margin-bottom: 15px;
+}
+.product-info-details #product-options label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-family: var(--body-font-family);
+    color: var(--text-color);
+}
+.product-info-details #product-options select,
+.product-info-details #product-options input { /* General input styling within options */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--body-font-family);
+    box-sizing: border-box;
+}
+.quantity-selector {
+   margin-bottom: 20px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+.quantity-selector label {
+   font-weight: 600;
+   font-family: var(--body-font-family);
+   color: var(--text-color);
+}
+.quantity-selector input[type="number"] {
+   width: 70px;
+   padding: 10px;
+   text-align: center;
+   border: 1px solid var(--border-color);
+   border-radius: 5px;
+   font-family: var(--body-font-family);
 }
 
-.product-info {
-  flex: 1;
+.product-info-details .btn-large { /* Specific style for a larger button */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    width: 100%; /* Make button full width of its container */
+    /* General .btn styles from client-styles.css will apply for background, color etc. */
 }
 
-#product-name {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-#product-price {
-  font-size: 1.5rem;
-  color: #007bff;
-  margin-bottom: 1rem;
-}
-
-#product-description {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.product-options {
-  margin-bottom: 1rem;
-}
-
-#add-to-cart {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#add-to-cart:hover {
-  background-color: #0056b3;
-}
-
+/* Related Products Section */
 .related-products {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 30px; /* Space above related products */
+    border-top: 1px solid var(--border-color); /* Separator */
 }
-
 .related-products h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center; /* Center section title */
+    font-family: var(--headings-font-family);
+}
+/* .product-grid and .product-card styles are assumed to be in index.css or client-styles.css */
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-main-layout {
+        flex-direction: column; /* Stack image and info */
+    }
+    .product-image-gallery,
+    .product-info-details {
+        max-width: 100%; /* Allow full width when stacked */
+        flex-basis: auto; /* Reset flex-basis when stacking */
+    }
+    .product-info-details #product-name {
+        font-size: 1.8em;
+    }
+    .product-info-details #product-price {
+        font-size: 1.5em;
+    }
+    .product-info-details .btn-large {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .product-detail {
-      flex-direction: column;
-  }
-
-  .product-image {
-      max-width: 100%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .product-detail {
-      padding: 1rem;
-  }
-
-  #product-name {
-      font-size: 1.5rem;
-  }
-
-  #product-price {
-      font-size: 1.2rem;
-  }
-
-  .related-products {
-      padding: 1rem;
-  }
-
-  .product-grid {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
+@media (max-width: 480px) {
+    .product-info-details #product-name {
+        font-size: 1.6em;
+    }
+    .product-info-details #product-price {
+        font-size: 1.3em;
+    }
+    .quantity-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .quantity-selector input[type="number"] {
+        width: 100px; /* Wider for easier touch */
+    }
 }

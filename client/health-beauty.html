@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Category - Saencrystal Specialty Stores</title>
+    <title>Health & Beauty - Saencrystal Specialty Stores</title>
     <link rel="stylesheet" href="../css/client/client-styles.css">
     <link rel="stylesheet" href="../css/client/products-category.css">
-    <!-- Removed links to component-specific and old category.css files -->
-    <!-- <link rel="stylesheet" href="../css/components/header.css"> -->
-    <!-- <link rel="stylesheet" href="../css/components/footer.css"> -->
-    <!-- <link rel="stylesheet" href="../css/components/product-card.css"> -->
-    <!-- <link rel="stylesheet" href="../css/category.css"> -->
 </head>
 <body>
     <header>
@@ -25,7 +20,7 @@
             </div>
             <ul id="nav-links" class="nav-links">
                 <li><a href="../index.html" >Home</a></li>
-                <li><a href="products-category.html" class="active">Shop All</a></li>
+                <li><a href="products-category.html">Shop All</a></li>
 
                 <li class="dropdown">
                     <a href="#">Departments <span class="dropdown-arrow">▼</span></a>
@@ -52,8 +47,8 @@
 
     <main>
         <section class="category-header container">
-            <h1>Our Products</h1>
-            <p>Discover our selection of high-quality items.</p>
+            <h1>Health & Beauty</h1>
+            <p>Your essentials for personal care and well-being.</p>
         </section>
 
         <div class="container product-page-container">
@@ -61,27 +56,19 @@
                 <h2>Filter By</h2>
                 <div class="filter-controls">
                     <div class="filter-group">
-                        <label for="category-select">Category:</label>
-                        <select id="category-select" name="category">
-                            <option value="">All</option>
-                            <option value="baking">Baking Supplies</option>
-                            <option value="groceries">Groceries</option>
-                            <option value="health">Health & Beauty</option>
-                            <option value="appliances">Small Appliances</option>
-                        </select>
+                        <h3>Category</h3>
+                        <ul>
+                            <li><a href="#">Skincare</a></li>
+                            <li><a href="#">Personal Care</a></li>
+                            <li><a href="#">Baby Care</a></li>
+                        </ul>
                     </div>
                     <div class="filter-group">
-                        <label for="price-range">Price Range:</label>
-                        <input type="range" id="price-range" name="price" min="0" max="100000" value="50000">
-                        <span id="price-value">₦50000</span>
-                    </div>
-                    <div class="filter-group">
-                        <label for="sort-by">Sort by:</label>
-                        <select id="sort-by" name="sort">
-                            <option value="name-asc">Name (A-Z)</option>
-                            <option value="name-desc">Name (Z-A)</option>
-                            <option value="price-asc">Price (Low-High)</option>
-                            <option value="price-desc">Price (High-Low)</option>
+                        <label for="brand-select">Brand:</label>
+                        <select id="brand-select" name="brand">
+                            <option value="">All Brands</option>
+                            <option value="brandX">Brand X</option>
+                            <option value="brandY">Brand Y</option>
                         </select>
                     </div>
                 </div>
@@ -90,36 +77,35 @@
             <section class="product-listing-area">
                 <div class="product-grid">
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Awesome+Product+1" alt="Awesome Product 1">
-                        <h3>Awesome Product 1</h3>
-                        <p>₦15,000.00</p>
-                        <button class="btn" onclick="addToCart('prod_awesome1', 'Awesome Product 1', '₦15,000.00', 'https://via.placeholder.com/200.png?text=Awesome+Product+1')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Moisturizing+Lotion" alt="Moisturizing Lotion (200ml)">
+                        <h3>Moisturizing Lotion (200ml)</h3>
+                        <p>₦2,500.00</p>
+                        <button class="btn" onclick="addToCart('hb_lotion_200ml', 'Moisturizing Lotion (200ml)', '₦2,500.00', 'https://via.placeholder.com/200.png?text=Moisturizing+Lotion')">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Great+Item+2" alt="Great Item 2">
-                        <h3>Great Item 2</h3>
-                        <p>₦25,000.00</p>
-                        <button class="btn" onclick="addToCart('prod_great2', 'Great Item 2', '₦25,000.00', 'https://via.placeholder.com/200.png?text=Great+Item+2')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Bar+Soap" alt="Bar Soap (3 Pack)">
+                        <h3>Bar Soap (3 Pack)</h3>
+                        <p>₦1,000.00</p>
+                        <button class="btn" onclick="addToCart('hb_soap_3pk', 'Bar Soap (3 Pack)', '₦1,000.00', 'https://via.placeholder.com/200.png?text=Bar+Soap')">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Fantastic+Choice+3" alt="Fantastic Choice 3">
-                        <h3>Fantastic Choice 3</h3>
-                        <p>₦10,500.00</p>
-                        <button class="btn" onclick="addToCart('prod_fantastic3', 'Fantastic Choice 3', '₦10,500.00', 'https://via.placeholder.com/200.png?text=Fantastic+Choice+3')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Baby+Diapers" alt="Baby Diapers (Size 3)">
+                        <h3>Baby Diapers (Size 3)</h3>
+                        <p>₦4,800.00</p>
+                        <button class="btn" onclick="addToCart('hb_diapers_s3', 'Baby Diapers (Size 3)', '₦4,800.00', 'https://via.placeholder.com/200.png?text=Baby+Diapers')">Add to Cart</button>
                     </div>
                     <div class="product-card">
-                        <img src="https://via.placeholder.com/200.png?text=Super+Deal+4" alt="Super Deal 4">
-                        <h3>Super Deal 4</h3>
-                        <p>₦45,000.00</p>
-                        <button class="btn" onclick="addToCart('prod_super4', 'Super Deal 4', '₦45,000.00', 'https://via.placeholder.com/200.png?text=Super+Deal+4')">Add to Cart</button>
+                        <img src="https://via.placeholder.com/200.png?text=Paracetamol" alt="Paracetamol Tablets">
+                        <h3>Paracetamol Tablets (20s)</h3>
+                        <p>₦500.00</p>
+                        <button class="btn" onclick="addToCart('hb_paracetamol_20s', 'Paracetamol Tablets (20s)', '₦500.00', 'https://via.placeholder.com/200.png?text=Paracetamol')">Add to Cart</button>
                     </div>
-                    <!-- Add more product cards as needed -->
                 </div>
             </section>
         </div>
 
         <section class="pagination container">
-            <!-- Pagination controls will be added here -->
+            <!-- Pagination controls will be added here if needed -->
         </section>
     </main>
 
@@ -136,10 +122,6 @@
     </footer>
 
     <script src="../js/client/client.js"></script>
-
     <!-- <script src="../js/client/nav-active-state.js"></script> -->
-
-    <script src="../js/components/search.js"></script>
-    <script src="../js/client/product-category.js"></script>
 </body>
 </html>

@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Detail - Saencrystal Specialty Stores</title>
     <link rel="stylesheet" href="../css/client/client-styles.css">
-    <link rel="stylesheet" href="../../css/components/header.css">
-    <link rel="stylesheet" href="../../css/components/footer.css">
     <link rel="stylesheet" href="../css/client/product-details.css">
+    <!-- Removed link to index.css as product grid/card styles are now in client-styles.css -->
 </head>
 <body>
     <header>
         <div class="logo">
             <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
-            <p>Saencrystal Specialty Stores</p>
+            <p>saencrystal <highlight-text>specialty</highlight-text> Stores</p>
         </div>
         <nav>
             <div class="mobile-nav">
@@ -21,41 +20,102 @@
                 <div id="menu-cancel" class="menu-cancel">✕</div>
             </div>
             <ul id="nav-links" class="nav-links">
-                <li><a href="./client/index.html" >Home</a></li>
-                <li><a href="../client/products-category.html" class="active">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="../index.html" >Home</a></li>
+                <li><a href="products-category.html" class="active">Shop All</a></li>
+
+                <li class="dropdown">
+                    <a href="#">Departments <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="grocery-food.html">Grocery & Food</a></li>
+                        <li><a href="dairy-frozen.html">Dairy & Frozen</a></li>
+                        <li><a href="bakery.html">Bakery</a></li>
+                        <li><a href="household-essentials.html">Household Essentials</a></li>
+                        <li><a href="health-beauty.html">Health & Beauty</a></li>
+                        <li><a href="fashion-lifestyle.html">Fashion Accessories & Lifestyle</a></li>
+                        <li><a href="stationery-office.html">Stationery & Office Supplies</a></li>
+                        <li><a href="tech-electronics.html">Tech & Small Electronics</a></li>
+                        <li><a href="home-living.html">Home & Living</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="cart.html">Cart <span id="cart-item-count" class="cart-badge">0</span></a></li>
                 <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="account-management.html"> Account</a></li>
-                
                 <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="product-detail">
-        <div class="product-image">
-            <!-- Product image will be dynamically inserted here -->
-        </div>
-        <div class="product-info">
-            <h1 id="product-name">Product Name</h1>
-            <p id="product-price">$0.00</p>
-            <p id="product-description">Product description will be loaded here.</p>
-            <div class="product-options">
-                <!-- Product options (e.g., size, color) will be dynamically inserted here -->
+    <main class="product-detail-page container">
+        <div class="product-main-layout">
+            <div class="product-image-gallery">
+                <img id="main-product-image" src="https://via.placeholder.com/400x400.png?text=Product+Image" alt="Product Name">
+                <!-- Example thumbnails (if adding this feature) -->
+                <!-- <div class="thumbnails">
+                     <img src="https://via.placeholder.com/80x80.png?text=Thumb+1" alt="Product Thumbnail 1" class="thumbnail-img active">
+                     <img src="https://via.placeholder.com/80x80.png?text=Thumb+2" alt="Product Thumbnail 2" class="thumbnail-img">
+                </div> -->
             </div>
-            <button id="add-to-cart">Add to Cart</button>
+            <div class="product-info-details">
+                <h1 id="product-name">Product Name</h1>
+                <p id="product-price" class="price">$0.00</p>
+                <div id="product-description" class="description">
+                    <p>Product description will be loaded here. This is some placeholder text for the description to give an idea of how it might look once populated with actual content.</p>
+                </div>
+                <div id="product-options" class="options">
+                    <!-- Product options (e.g., size, color) will be dynamically inserted here -->
+                     <div class="form-group">
+                         <label for="size-select">Size:</label>
+                         <select id="size-select" name="size">
+                             <option value="S">Small</option>
+                             <option value="M">Medium</option>
+                             <option value="L">Large</option>
+                         </select>
+                     </div>
+                </div>
+                <div class="quantity-selector">
+                   <label for="quantity-input">Quantity:</label>
+                   <input type="number" id="quantity-input" value="1" min="1">
+                </div>
+                <button id="add-to-cart" class="btn btn-large">Add to Cart</button>
+            </div>
         </div>
     </main>
 
-    <section class="related-products">
+    <section class="related-products container">
         <h2>Related Products</h2>
         <div class="product-grid">
-            <!-- Related products will be dynamically inserted here -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200?text=Related+1" alt="Related Product 1">
+                <h3>Related Product 1</h3>
+                <p>$19.99</p>
+                <a href="product-details.html?id=RELATED_ID_1" class="btn">View Details</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200?text=Related+2" alt="Related Product 2">
+                <h3>Related Product 2</h3>
+                <p>$24.99</p>
+                <a href="product-details.html?id=RELATED_ID_2" class="btn">View Details</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200?text=Related+3" alt="Related Product 3">
+                <h3>Related Product 3</h3>
+                <p>$29.99</p>
+                <a href="product-details.html?id=RELATED_ID_3" class="btn">View Details</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <!-- Footer content will be loaded from a separate file -->
+        <div class="container">
+            <p>&copy; 2024 Saencrystal Specialty Stores. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <a href="delivery-service.html">Delivery Service</a> |
+                <a href="loyalty-program.html">Loyalty Program</a> |
+                <a href="bulk-deals.html">Bulk Deals</a>
+            </div>
+        </div>
     </footer>
 
     <script src="../js/client/client.js"></script>

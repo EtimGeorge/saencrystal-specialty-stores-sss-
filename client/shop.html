@@ -3,66 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - Saencrystal Specialty Stores</title>
+    <title>Shop All - Saencrystal Specialty Stores</title>
     <link rel="stylesheet" href="../css/client/client-styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/client/products-category.css"> /* For page layout and filters */
+    <!-- Removed Font Awesome link as it's not used by the new design system -->
+    <!-- Removed link to index.css as product grid/card styles are now in client-styles.css -->
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="../assets/images/client/logo.png" alt="Saencrystal Specialty Stores">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="product-details.html">Products</a></li>
-                    <li><a href="contact-us.html">Contact Us</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="login-signup.html">Login</a></li>
-                </ul>
-                <div class="hamburger-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+        <div class="logo">
+            <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
+            <p>saencrystal <highlight-text>specialty</highlight-text> Stores</p>
         </div>
+        <nav>
+            <div class="mobile-nav">
+                <div id="menu-toggle" class="menu-toggle">☰</div>
+                <div id="menu-cancel" class="menu-cancel">✕</div>
+            </div>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="products-category.html" class="active">Shop All</a></li>
+
+                <li class="dropdown">
+                    <a href="#">Departments <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="grocery-food.html">Grocery & Food</a></li>
+                        <li><a href="dairy-frozen.html">Dairy & Frozen</a></li>
+                        <li><a href="bakery.html">Bakery</a></li>
+                        <li><a href="household-essentials.html">Household Essentials</a></li>
+                        <li><a href="health-beauty.html">Health & Beauty</a></li>
+                        <li><a href="fashion-lifestyle.html">Fashion Accessories & Lifestyle</a></li>
+                        <li><a href="stationery-office.html">Stationery & Office Supplies</a></li>
+                        <li><a href="tech-electronics.html">Tech & Small Electronics</a></li>
+                        <li><a href="home-living.html">Home & Living</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="cart.html">Cart <span id="cart-item-count" class="cart-badge">0</span></a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
     
     <main>
-        <section class="shop">
-            <div class="container">
-                <h1>Shop Our Products</h1>
-                <div class="product-grid">
-                    <!-- Example Product -->
-                    <div class="product-card">
-                        <img src="../assets/images/products/product1.jpg" alt="Product Name">
-                        <h3>Product Name</h3>
-                        <p>$Price</p>
-                        <a href="product-details.html" class="btn">View Details</a>
+        <section class="category-header container">
+            <h1>Shop All Our Products</h1>
+            <p>Browse our complete collection.</p>
+        </section>
+
+        <div class="container product-page-container">
+            <aside class="filter-sidebar">
+                <h2>Filter By</h2>
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="category-select-shop">Category:</label>
+                        <select id="category-select-shop" name="category">
+                            <option value="">All</option>
+                            <option value="baking">Baking Supplies</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="health">Health & Beauty</option>
+                            <option value="appliances">Small Appliances</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="fashion">Fashion</option>
+                        </select>
                     </div>
-                    <!-- Repeat for other products -->
+                    <div class="filter-group">
+                        <label for="price-range-shop">Price Range:</label>
+                        <input type="range" id="price-range-shop" name="price" min="0" max="200000" value="100000">
+                        <span id="price-value-shop">₦100000</span>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-by-shop">Sort by:</label>
+                        <select id="sort-by-shop" name="sort">
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="price-asc">Price (Low-High)</option>
+                            <option value="price-desc">Price (High-Low)</option>
+                            <option value="newest">Newest Arrivals</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            </aside>
+
+            <section class="product-listing-area">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Elegant+Shop+Item+1" alt="Elegant Shop Item 1">
+                        <h3>Elegant Shop Item 1</h3>
+                        <p>₦78,000.00</p>
+                        <button class="btn" onclick="addToCart('shop_item_101', 'Elegant Shop Item 1', '₦78,000.00', 'https://via.placeholder.com/200.png?text=Elegant+Shop+Item+1')">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Useful+Gadget+2" alt="Useful Gadget 2">
+                        <h3>Useful Gadget 2</h3>
+                        <p>₦12,500.00</p>
+                        <button class="btn" onclick="addToCart('shop_item_102', 'Useful Gadget 2', '₦12,500.00', 'https://via.placeholder.com/200.png?text=Useful+Gadget+2')">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Trendy+Accessory+3" alt="Trendy Accessory 3">
+                        <h3>Trendy Accessory 3</h3>
+                        <p>₦5,500.00</p>
+                        <button class="btn" onclick="addToCart('shop_item_103', 'Trendy Accessory 3', '₦5,500.00', 'https://via.placeholder.com/200.png?text=Trendy+Accessory+3')">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Premium+Quality+Good+4" alt="Premium Quality Good 4">
+                        <h3>Premium Quality Good 4</h3>
+                        <p>₦92,000.00</p>
+                        <button class="btn" onclick="addToCart('shop_item_104', 'Premium Quality Good 4', '₦92,000.00', 'https://via.placeholder.com/200.png?text=Premium+Quality+Good+4')">Add to Cart</button>
+                    </div>
+                     <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Basic+Essential+5" alt="Basic Essential 5">
+                        <h3>Basic Essential 5</h3>
+                        <p>₦3,200.00</p>
+                        <button class="btn" onclick="addToCart('shop_item_105', 'Basic Essential 5', '₦3,200.00', 'https://via.placeholder.com/200.png?text=Basic+Essential+5')">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200.png?text=Special+Edition+6" alt="Special Edition 6">
+                        <h3>Special Edition 6</h3>
+                        <p>₦150,000.00</p>
+                        <button class="btn" onclick="addToCart('shop_item_106', 'Special Edition 6', '₦150,000.00', 'https://via.placeholder.com/200.png?text=Special+Edition+6')">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="pagination container">
+            <!-- Pagination controls can be added here if needed -->
+            <a href="#" class="disabled">&laquo; Prev</a>
+            <span class="current">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">Next &raquo;</a>
         </section>
     </main>
     
     <footer>
         <div class="container">
             <p>&copy; 2024 Saencrystal Specialty Stores. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <a href="delivery-service.html">Delivery Service</a> |
+                <a href="loyalty-program.html">Loyalty Program</a> |
+                <a href="bulk-deals.html">Bulk Deals</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Chat Assistant -->
+    <!-- Chat Assistant (already styled globally) -->
     <div id="chat-assistant">
         <button id="chat-toggle">Chat with us!</button>
         <div id="chat-box" style="display:none;">
             <div id="chat-header">
                 <h4>Chat Assistant</h4>
-                <button id="close-chat">X</button>
+                <span id="close-chat">X</span> <!-- Ensuring this is span as per client-styles.css if it was a button -->
             </div>
             <div id="chat-content">
-                <p>Welcome! How can we help you today?</p>
+                Welcome! How can we help you today?
             </div>
             <div id="chat-input">
                 <input type="text" id="chat-message" placeholder="Type your message...">
@@ -71,6 +169,8 @@
         </div>
     </div>
     
-    <script src="../js/client/index.js"></script>
+    <script src="../js/client/client.js"></script>
+    <script src="../js/client/nav-active-state.js"></script>
+    <!-- Add specific JS for shop page filters if different from products-category.js -->
 </body>
 </html>

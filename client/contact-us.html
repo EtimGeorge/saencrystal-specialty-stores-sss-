@@ -5,77 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Saencrystal Specialty Stores</title>
     <link rel="stylesheet" href="../css/client/client-styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome link removed -->
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="../assets/images/client/logo.png" alt="Saencrystal Specialty Stores">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="product-details.html">Products</a></li>
-                    <li><a href="contact-us.html">Contact Us</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="login-signup.html">Login</a></li>
-                </ul>
-                <div class="hamburger-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+        <div class="logo">
+            <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
+            <p>saencrystal <highlight-text>specialty</highlight-text> Stores</p>
         </div>
+        <nav>
+            <div class="mobile-nav">
+                <div id="menu-toggle" class="menu-toggle">☰</div>
+                <div id="menu-cancel" class="menu-cancel">✕</div>
+            </div>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="products-category.html">Shop All</a></li>
+
+                <li class="dropdown">
+                    <a href="#">Departments <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="grocery-food.html">Grocery & Food</a></li>
+                        <li><a href="dairy-frozen.html">Dairy & Frozen</a></li>
+                        <li><a href="bakery.html">Bakery</a></li>
+                        <li><a href="household-essentials.html">Household Essentials</a></li>
+                        <li><a href="health-beauty.html">Health & Beauty</a></li>
+                        <li><a href="fashion-lifestyle.html">Fashion Accessories & Lifestyle</a></li>
+                        <li><a href="stationery-office.html">Stationery & Office Supplies</a></li>
+                        <li><a href="tech-electronics.html">Tech & Small Electronics</a></li>
+                        <li><a href="home-living.html">Home & Living</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="cart.html">Cart <span id="cart-item-count" class="cart-badge">0</span></a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html" class="active">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
     
-    <main>
-        <section class="contact-us">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-                <div class="contact-info">
-                    <h2>Our Address</h2>
-                    <p>123 Main Street, City, Country</p>
-                    <h2>Phone</h2>
-                    <p>+123 456 7890</p>
-                    <h2>Email</h2>
-                    <p>support@saencrystal.com</p>
-                </div>
+    <main class="container content-page">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Whether you have a question about our products, services, or anything else, our team is ready to answer all your questions.</p>
+
+        <form id="contact-form" class="contact-form-styled">
+            <div class="form-group">
+                <label for="contact-name">Full Name</label>
+                <input type="text" id="contact-name" name="name" required>
             </div>
-        </section>
+            <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" name="subject">
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p><strong>Address:</strong> 123 Main Street, Cityville, State, 12345</p>
+            <p><strong>Phone:</strong> <a href="tel:+1234567890">+123 456 7890</a></p>
+            <p><strong>Email:</strong> <a href="mailto:support@saencrystal.com">support@saencrystal.com</a></p>
+            <h3>Business Hours</h3>
+            <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+            <p>Saturday: 10:00 AM - 5:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
     </main>
     
     <footer>
         <div class="container">
             <p>&copy; 2024 Saencrystal Specialty Stores. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <a href="delivery-service.html">Delivery Service</a> |
+                <a href="loyalty-program.html">Loyalty Program</a> |
+                <a href="bulk-deals.html">Bulk Deals</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Chat Assistant -->
+    <!-- Chat Assistant (already styled globally) -->
     <div id="chat-assistant">
         <button id="chat-toggle">Chat with us!</button>
         <div id="chat-box" style="display:none;">
             <div id="chat-header">
                 <h4>Chat Assistant</h4>
-                <button id="close-chat">X</button>
+                <span id="close-chat">X</span>
             </div>
             <div id="chat-content">
-                <p>Welcome! How can we help you today?</p>
+                Welcome! How can we help you today?
             </div>
             <div id="chat-input">
                 <input type="text" id="chat-message" placeholder="Type your message...">
@@ -84,6 +111,7 @@
         </div>
     </div>
     
-    <script src="../js/client/index.js"></script>
+    <script src="../js/client/client.js"></script>
+    <script src="../js/client/nav-active-state.js"></script>
 </body>
 </html>
