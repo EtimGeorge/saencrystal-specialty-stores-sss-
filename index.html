@@ -4,48 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saencrystal Specialty Stores</title>
-    
-    <link rel="stylesheet" href="../css/client/client-styles.css">
 
-    <link rel="stylesheet" href="../css/client/index.css">
+    <link rel="stylesheet" href="css/client/client-styles.css">
+
+    <link rel="stylesheet" href="css/client/index.css">
 
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
-            <p>saencrystal <highlight-text>specialty</highlight-text> Stores</p> 
-        </div>
-        <nav>
-            <div class="mobile-nav">
-                <div id="menu-toggle" class="menu-toggle">☰</div>
-                <div id="menu-cancel" class="menu-cancel">✕</div>
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="index.html" title="Home">
+                    <img src="assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
+                    <p>saencrystal <highlight-text>specialty</highlight-text> Stores</p>
+                </a>
             </div>
-            <ul id="nav-links" class="nav-links">
-                <li><a href="../index.html" class="active">Home</a></li>
-                <li><a href="products-category.html">Shop All</a></li>
+            <nav>
+                <div class="mobile-nav">
+                    <div id="menu-toggle" class="menu-toggle">☰</div>
+                    <div id="menu-cancel" class="menu-cancel">✕</div>
+                </div>
+                <ul id="nav-links" class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="client/products-category.html">Shop All</a></li>
 
                 <li class="dropdown">
                     <a href="#">Departments <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="grocery-food.html">Grocery & Food</a></li>
-                        <li><a href="dairy-frozen.html">Dairy & Frozen</a></li>
-                        <li><a href="bakery.html">Bakery</a></li>
-                        <li><a href="household-essentials.html">Household Essentials</a></li>
-                        <li><a href="health-beauty.html">Health & Beauty</a></li>
-                        <li><a href="fashion-lifestyle.html">Fashion Accessories & Lifestyle</a></li>
-                        <li><a href="stationery-office.html">Stationery & Office Supplies</a></li>
-                        <li><a href="tech-electronics.html">Tech & Small Electronics</a></li>
-                        <li><a href="home-living.html">Home & Living</a></li>
+                        <li><a href="client/grocery-food.html">Grocery & Food</a></li>
+                        <li><a href="client/dairy-frozen.html">Dairy & Frozen</a></li>
+                        <li><a href="client/bakery.html">Bakery</a></li>
+                        <li><a href="client/household-essentials.html">Household Essentials</a></li>
+                        <li><a href="client/health-beauty.html">Health & Beauty</a></li>
+                        <li><a href="client/fashion-lifestyle.html">Fashion Accessories & Lifestyle</a></li>
+                        <li><a href="client/stationery-office.html">Stationery & Office Supplies</a></li>
+                        <li><a href="client/tech-electronics.html">Tech & Small Electronics</a></li>
+                        <li><a href="client/home-living.html">Home & Living</a></li>
                     </ul>
                 </li>
 
-                <li><a href="cart.html">Cart <span id="cart-item-count" class="cart-badge">0</span></a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="contact-us.html">Contact Us</a></li>
+                <li><a href="client/cart.html">Cart <span id="cart-item-count" class="cart-badge">0</span></a></li>
+                <li><a href="client/checkout.html">Checkout</a></li>
+                <li><a href="client/about-us.html">About Us</a></li>
+                <li><a href="client/contact-us.html">Contact Us</a></li>
+                <li class="nav-item-login"><a href="client/login.html">Login</a></li>
+                <li class="nav-item-register"><a href="client/register.html">Register</a></li>
+                <li class="nav-item-profile" style="display:none;"><a href="client/profile.html">My Profile</a></li>
+                <li class="nav-item-logout" style="display:none;"><a href="#" id="customer-logout-link">Logout</a></li>
             </ul>
-        </nav>
+            </nav>
+            <div class="theme-toggle-container header-toggle">
+                <button id="theme-toggle-header" class="theme-toggle-button" title="Toggle light/dark theme">
+                    <span class="theme-icon-header">☀️</span>
+                    <span class="sr-only">Toggle Theme</span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -53,7 +67,7 @@
             <div class="container">
                 <h1>Welcome to Saencrystal Specialty Stores</h1>
                 <p>Your one-stop shop for groceries and general merchandise.</p>
-                <a href="product-details.html" class="btn">Shop Now</a>
+                <a href="client/product-details.html" class="btn">Shop Now</a>
             </div>
         </section>
 
@@ -67,28 +81,28 @@
                 <h2>Featured Products</h2>
                 <div class="carousel">
                     <div class="carousel-item active">
-                        <img src="../assets/images/client/0dfafcf0ee6bc8717b2b147e80c6b080.jpg" alt="Featured Product 1">
+                        <img src="assets/images/client/0dfafcf0ee6bc8717b2b147e80c6b080.jpg" alt="Featured Product 1">
                         <h3>Featured Product 1</h3>
                         <p>₦10.00</p>
-                        <button class="btn" onclick="addToCart('feat_prod_1', 'Featured Product 1', '₦10.00', '../assets/images/client/0dfafcf0ee6bc8717b2b147e80c6b080.jpg')">Add to Cart</button>
+                        <button class="btn" onclick="addToCart('feat_prod_1', 'Featured Product 1', '₦10.00', 'assets/images/client/0dfafcf0ee6bc8717b2b147e80c6b080.jpg')">Add to Cart</button>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/images/client/025fee5513f6daf23303501308217fe3.jpg" alt="Featured Product 2">
+                        <img src="assets/images/client/025fee5513f6daf23303501308217fe3.jpg" alt="Featured Product 2">
                         <h3>Featured Product 2</h3>
                         <p>₦15.00</p>
-                        <button class="btn" onclick="addToCart('feat_prod_2', 'Featured Product 2', '₦15.00', '../assets/images/client/025fee5513f6daf23303501308217fe3.jpg')">Add to Cart</button>
+                        <button class="btn" onclick="addToCart('feat_prod_2', 'Featured Product 2', '₦15.00', 'assets/images/client/025fee5513f6daf23303501308217fe3.jpg')">Add to Cart</button>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/images/client/0ab58774cd54422c0ab809a31b63b42d.jpg" alt="Featured Product 3">
+                        <img src="assets/images/client/0ab58774cd54422c0ab809a31b63b42d.jpg" alt="Featured Product 3">
                         <h3>Featured Product 3</h3>
                         <p>₦20.00</p>
-                        <button class="btn" onclick="addToCart('feat_prod_3', 'Featured Product 3', '₦20.00', '../assets/images/client/0ab58774cd54422c0ab809a31b63b42d.jpg')">Add to Cart</button>
+                        <button class="btn" onclick="addToCart('feat_prod_3', 'Featured Product 3', '₦20.00', 'assets/images/client/0ab58774cd54422c0ab809a31b63b42d.jpg')">Add to Cart</button>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/images/client/3c7acc06903ebfc8298c8cff7d2bfe21.jpg" alt="Featured Product 4">
+                        <img src="assets/images/client/3c7acc06903ebfc8298c8cff7d2bfe21.jpg" alt="Featured Product 4">
                         <h3>Featured Product 4</h3>
                         <p>₦25.00</p>
-                        <button class="btn" onclick="addToCart('feat_prod_4', 'Featured Product 4', '₦25.00', '../assets/images/client/3c7acc06903ebfc8298c8cff7d2bfe21.jpg')">Add to Cart</button>
+                        <button class="btn" onclick="addToCart('feat_prod_4', 'Featured Product 4', '₦25.00', 'assets/images/client/3c7acc06903ebfc8298c8cff7d2bfe21.jpg')">Add to Cart</button>
                     </div>
                 </div>
                 <button class="carousel-prev">❮</button>
@@ -114,12 +128,12 @@
             <div class="container">
                 <h2>Seasonal Promotions</h2>
                 <div class="promotion-banner">
-                    <img src="../assets/images/client/BUA-Premium-Flour.webp" alt="Seasonal Promotion">
+                    <img src="assets/images/client/BUA-Premium-Flour.webp" alt="Seasonal Promotion">
 
                     <div class="promotion-content">
                         <h3>Summer Sale!</h3>
                         <p>Up to 50% off on selected items</p>
-                        <a href="../client/products-category.html" class="btn">Shop Now</a>
+                        <a href="client/products-category.html" class="btn">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -130,10 +144,10 @@
                 <h2>New Arrivals</h2>
                 <div class="product-grid">
                     <div class="product-card">
-                        <img src="../assets/images/client/golden-penny-prime-flour-₦63,400.00 NGN.jpeg" alt="Golden Penny Prime Flour">
+                        <img src="assets/images/client/golden-penny-prime-flour-₦63,400.00 NGN.jpeg" alt="Golden Penny Prime Flour">
                         <h3>Golden Penny Prime Flour</h3>
                         <p>₦63,400.00</p>
-                        <button class="btn" onclick="addToCart('gp_flour_63400', 'Golden Penny Prime Flour', '₦63,400.00', '../assets/images/client/golden-penny-prime-flour-₦63,400.00 NGN.jpeg')">Add to Cart</button>
+                        <button class="btn" onclick="addToCart('gp_flour_63400', 'Golden Penny Prime Flour', '₦63,400.00', 'assets/images/client/golden-penny-prime-flour-₦63,400.00 NGN.jpeg')">Add to Cart</button>
                     </div>
                     <div class="product-card">
                         <img src="https://via.placeholder.com/200.png?text=New+Product+2" alt="New Product 2">
@@ -192,11 +206,27 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 Saencrystal Specialty Stores. All rights reserved.</p>
+            <div class="footer-theme-toggle">
+                <button id="theme-toggle-footer" class="theme-toggle-button" title="Toggle light/dark theme">
+                    <span class="theme-icon-footer">☀️</span>
+                    <span class="sr-only">Toggle Theme</span>
+                </button>
+            </div>
             <div class="footer-links">
                 <h4>Our Services</h4>
-                <a href="delivery-service.html">Delivery Service</a> |
-                <a href="loyalty-program.html">Loyalty Program</a> |
-                <a href="bulk-deals.html">Bulk Deals</a>
+                <a href="client/delivery-service.html">Delivery Service</a> |
+                <a href="client/loyalty-program.html">Loyalty Program</a> |
+                <a href="client/bulk-deals.html">Bulk Deals</a>
+            </div>
+            <div class="footer-social-links">
+                <h4>Connect With Us</h4>
+                <a href="https://facebook.com/saencrystal" target="_blank" title="Facebook" class="social-link">FB</a>
+                <a href="https://instagram.com/saencrystal" target="_blank" title="Instagram" class="social-link">IG</a>
+                <a href="https://twitter.com/saencrystal" target="_blank" title="Twitter/X" class="social-link">X</a>
+                <a href="https://linkedin.com/company/saencrystal" target="_blank" title="LinkedIn" class="social-link">LI</a>
+            </div>
+            <div class="footer-admin-login-section">
+                <a href="admin/index.html" class="footer-admin-link">Admin Login</a>
             </div>
         </div>
     </footer>
@@ -218,10 +248,10 @@
         </div>
     </div>
 
-    <script src="../js/client/client.js"></script>
+    <script src="js/client/client.js"></script>
 
-    <script src="../js/client/nav-active-state.js"></script>
+    <script src="js/client/nav-active-state.js"></script>
 
-    <script src="../js/client/index.js"></script>
+    <script src="js/client/index.js"></script>
 </body>
 </html>

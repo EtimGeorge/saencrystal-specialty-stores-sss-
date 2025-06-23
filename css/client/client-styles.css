@@ -23,6 +23,18 @@
   --acent-color: #e91e63; /* Current value, review if needed */
   --body-font-family: 'Open Sans', sans-serif;
   --headings-font-family: 'Montserrat', sans-serif;
+
+  /* Dark Theme Color Variables */
+  --dark-background-color: #121212;
+  --dark-secondary-background-color: #1e1e1e;
+  --dark-text-color: #e0e0e0;
+  --dark-primary-text-color: #8FBC8F; /* For headings/primary elements on dark bg */
+  --dark-accent-color: #5cb85c;
+  --dark-accent-color-rgb: 92, 184, 92;
+  --dark-border-color: #333333;
+  --dark-shadow-color: rgba(255, 255, 255, 0.05);
+  --dark-shadow-color-2: rgba(255, 255, 255, 0.03);
+  --dark-footer-bg-color: #1a1a1a;
 }
 
 /* General Styles */
@@ -713,3 +725,450 @@ footer .container { /* This rule might already exist or might need adjustment */
     vertical-align: top; /* Align with top of text if needed */
 }
 /* === End of Cart Badge Styles === */
+
+
+/* === Dark Theme Rules === */
+body.dark-theme {
+    --background-color: var(--dark-background-color);
+    --secondary-background-color: var(--dark-secondary-background-color);
+    --text-color: var(--dark-text-color);
+    --primary-color: var(--dark-primary-text-color); /* Primary color for text/headings in dark mode */
+    --accent-color: var(--dark-accent-color);
+    --accent-color-rgb: var(--dark-accent-color-rgb);
+    --border-color: var(--dark-border-color);
+    --shadow-color: var(--dark-shadow-color);
+    --shadow-color-2: var(--dark-shadow-color-2);
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Component-specific overrides for dark theme */
+body.dark-theme header {
+    background-color: var(--secondary-background-color);
+    color: var(--primary-color);
+    border-bottom-color: var(--border-color);
+}
+body.dark-theme .logo p { color: var(--primary-color); } /* Already uses --primary-color, which is now lighter */
+body.dark-theme .logo highlight-text { color: var(--accent-color); } /* Already uses --accent-color, which is updated */
+
+body.dark-theme .nav-links {
+    background-color: var(--secondary-background-color); /* Match header */
+    box-shadow: 0 2px 4px var(--shadow-color); /* Use dark shadow */
+}
+body.dark-theme .nav-links a {
+    color: var(--text-color);
+}
+body.dark-theme .nav-links a:hover {
+    color: var(--accent-color);
+}
+body.dark-theme .nav-links a.active {
+    background-color: var(--accent-color);
+    color: var(--dark-background-color); /* Dark text on light green accent */
+    box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.5);
+}
+body.dark-theme .nav-links .dropdown-menu {
+    background-color: var(--secondary-background-color);
+    box-shadow: 0 8px 16px 0px var(--shadow-color);
+    border-color: var(--border-color);
+}
+body.dark-theme .nav-links .dropdown-menu li a {
+    color: var(--text-color); /* Was primary-color, now text-color */
+}
+body.dark-theme .nav-links .dropdown-menu li a:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-background-color); /* Dark text on light green accent */
+}
+
+
+body.dark-theme button, body.dark-theme .btn {
+    background-color: var(--accent-color);
+    color: var(--dark-background-color); /* Dark text for light green accent */
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+body.dark-theme button:hover, body.dark-theme .btn:hover {
+    background-color: #4a9b4a; /* Slightly darker version of #5cb85c */
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+body.dark-theme .theme-toggle-button {
+   border-color: var(--text-color);
+   color: var(--text-color);
+}
+body.dark-theme .theme-toggle-button:hover {
+   background-color: var(--text-color);
+   color: var(--background-color);
+}
+body.dark-theme .cart-badge {
+    background-color: var(--accent-color);
+    color: var(--dark-background-color); /* Dark text for light green accent */
+}
+
+
+body.dark-theme footer {
+    background-color: var(--dark-footer-bg-color); /* Specific dark footer bg */
+    color: var(--text-color); /* General light text */
+}
+body.dark-theme .footer-links {
+    border-top-color: var(--border-color); /* Darker border */
+}
+body.dark-theme .footer-links h4 {
+    color: var(--text-color); /* Light text for heading */
+}
+body.dark-theme .footer-links a {
+    color: var(--text-color); /* Light text for links */
+}
+body.dark-theme .footer-links a:hover {
+    color: var(--accent-color); /* Accent hover for links */
+}
+
+/* Product Cards in Dark Mode */
+body.dark-theme .product-card {
+     background-color: var(--dark-secondary-background-color);
+     border-color: var(--dark-border-color);
+     box-shadow: var(--dark-shadow-color-2) 0px 1px 3px 0px, var(--dark-shadow-color-2) 0px 0px 0px 1px;
+}
+body.dark-theme .product-card:hover {
+     box-shadow: var(--dark-shadow-color) 0px 4px 12px 0px;
+}
+body.dark-theme .product-card h3 { color: var(--text-color); }
+body.dark-theme .product-card p { color: var(--accent-color); } /* Price uses accent color */
+
+/* Forms in Dark Mode (general) */
+body.dark-theme input[type="text"],
+body.dark-theme input[type="email"],
+body.dark-theme input[type="number"],
+body.dark-theme input[type="password"],
+body.dark-theme select,
+body.dark-theme textarea {
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+body.dark-theme input[type="text"]:focus,
+body.dark-theme input[type="email"]:focus,
+body.dark-theme input[type="number"]:focus,
+body.dark-theme input[type="password"]:focus,
+body.dark-theme select:focus,
+body.dark-theme textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Specific Page Sections in Dark Mode */
+body.dark-theme .search-bar {
+    background-color: var(--dark-background-color); /* Match body background */
+}
+body.dark-theme .category-link {
+    background-color: var(--dark-secondary-background-color);
+    color: var(--text-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .category-link:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-background-color);
+    border-color: var(--accent-color);
+}
+body.dark-theme .promotion-banner {
+    background-color: var(--dark-secondary-background-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .review-item {
+    background-color: var(--dark-secondary-background-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .newsletter-signup {
+    background-color: var(--dark-secondary-background-color);
+    border-top-color: var(--dark-border-color);
+    border-bottom-color: var(--dark-border-color);
+}
+body.dark-theme .hero {
+    background-color: var(--dark-secondary-background-color);
+    border-bottom-color: var(--dark-border-color);
+}
+
+/* Cart Page Specifics */
+body.dark-theme .cart-item {
+    background-color: var(--dark-secondary-background-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .quantity-btn { /* Cart quantity buttons */
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .quantity-btn:hover { background-color: #333; }
+body.dark-theme .quantity-input { /* Cart quantity input */
+    background-color: var(--dark-secondary-background-color);
+    color: var(--text-color);
+}
+body.dark-theme .cart-item-remove .remove-btn {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+body.dark-theme .cart-item-remove .remove-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-background-color);
+}
+body.dark-theme .cart-summary {
+    background-color: var(--dark-secondary-background-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .empty-cart-info {
+    background-color: var(--dark-secondary-background-color);
+    border-color: var(--dark-border-color);
+}
+
+/* Checkout Page Specifics */
+body.dark-theme .checkout-page section {
+    background-color: var(--dark-secondary-background-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .checkout-page section h2 {
+    border-bottom-color: var(--dark-border-color);
+}
+body.dark-theme .order-item {
+    border-bottom-color: var(--dark-border-color);
+}
+body.dark-theme .summary-total {
+    border-top-color: var(--primary-color); /* Primary is already lighter */
+}
+
+/* Product details page */
+body.dark-theme .product-image-gallery #main-product-image {
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .related-products { border-top-color: var(--dark-border-color); }
+
+/* Content pages (About, Contact, Services) */
+body.dark-theme .content-page h2 {
+    border-bottom-color: var(--dark-border-color);
+}
+body.dark-theme .contact-form-styled label { color: var(--text-color); } /* Was primary, now general text */
+body.dark-theme .contact-info { border-top-color: var(--dark-border-color); }
+body.dark-theme .contact-info p strong { color: var(--primary-color); } /* Primary is already lighter */
+body.dark-theme .contact-info a { color: var(--accent-color); }
+
+/* Admin login page specific if it uses client-styles directly */
+body.admin-login-page.dark-theme {
+    background-color: var(--dark-background-color);
+}
+body.dark-theme .login-form-container {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 4px 15px var(--dark-shadow-color);
+}
+body.dark-theme .login-form-container input[type="text"],
+body.dark-theme .login-form-container input[type="password"] {
+    background-color: #2a2a2a; /* Same as general inputs */
+    color: var(--text-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-theme .login-form-container input[type="text"]:focus,
+body.dark-theme .login-form-container input[type="password"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.3);
+}
+body.dark-theme .login-form-container .error-message {
+    color: var(--danger-color); /* Danger color should remain visible */
+}
+
+/* Ensuring client-styles.css variables used by admin-styles.css also update */
+body.dark-theme {
+    /* These are already defined in the main body.dark-theme block.
+       This comment is a reminder that admin-styles.css @imports client-styles.css
+       and thus inherits its :root and body.dark-theme reassignments.
+       Admin specific elements like .admin-header, .admin-sidebar if they use
+       client variables directly would need their own body.dark-theme context if they
+       don't adapt automatically. However, admin-styles.css defines its own colors mostly.
+    */
+}
+/* === End of Dark Theme Rules === */
+
+/* === Footer Social Link Styles === */
+.footer-social-links {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--light-text-color); /* Light border on dark primary bg (light theme footer) */
+    text-align: center;
+}
+body.dark-theme .footer-social-links {
+    /* Dark theme footer bg is --primary-color (#8FBC8F), text is --secondary-background-color (#1e1e1e) */
+    border-top-color: var(--secondary-background-color); /* Dark border on light primary bg */
+}
+
+.footer-social-links h4 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: var(--light-text-color); /* Light text on dark primary bg */
+}
+body.dark-theme .footer-social-links h4 {
+    color: var(--secondary-background-color); /* Dark text on light primary bg */
+}
+
+.footer-social-links .social-link {
+    display: inline-block;
+    margin: 0 8px;
+    padding: 5px 8px;
+    color: var(--light-text-color); /* Light text on dark primary bg */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: color 0.3s, border-color 0.3s;
+}
+body.dark-theme .footer-social-links .social-link {
+    color: var(--secondary-background-color); /* Dark text on light primary bg */
+}
+
+.footer-social-links .social-link:hover {
+    /* Accent color is globally managed by body.dark-theme for its value */
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+/* === End of Footer Social Link Styles === */
+
+/* === Customer Auth Link Visibility === */
+/* Default state (user not logged in) */
+.nav-item-profile,
+.nav-item-logout {
+    display: none !important; /* Ensure hidden if JS is disabled and inline style removed */
+}
+.nav-item-login,
+.nav-item-register {
+    display: list-item; /* Or inline-block/flex depending on nav structure */
+}
+
+/* State when user is logged in (body.customer-logged-in is present) */
+body.customer-logged-in .nav-item-profile,
+body.customer-logged-in .nav-item-logout {
+    display: list-item; /* Or inline-block/flex */
+}
+body.customer-logged-in .nav-item-login,
+body.customer-logged-in .nav-item-register {
+    display: none !important; /* Ensure hidden */
+}
+/* === End of Customer Auth Link Visibility === */
+
+/* === Footer Admin Login Link Styles === */
+.footer-admin-login-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--light-text-color); /* Light border on dark primary bg (light theme footer) */
+    text-align: center;
+}
+body.dark-theme .footer-admin-login-section {
+    /* Dark theme footer bg is --primary-color (#8FBC8F), text is --secondary-background-color (#1e1e1e) */
+    border-top-color: var(--secondary-background-color); /* Dark border on light primary bg */
+}
+
+.footer-admin-link {
+    color: var(--light-text-color); /* Light text on dark primary bg */
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+body.dark-theme .footer-admin-link {
+    color: var(--secondary-background-color); /* Dark text on light primary bg */
+}
+
+.footer-admin-link:hover {
+    color: var(--accent-color); /* Accent color on hover, consistent with other footer links */
+    text-decoration: underline;
+}
+/* === End of Footer Admin Login Link Styles === */
+
+/* === Revised Header Layout for Theme Toggle === */
+header .header-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Assuming a max-width is applied by a .container class or similar on a parent,
+       or use width: 90%; margin: 0 auto; if header is full-bleed */
+    padding: 5px 0; /* Adjust vertical padding if needed */
+}
+
+/* Adjust existing .logo and nav styles if they have margins that interfere with flex */
+header .logo, header nav {
+   margin: 0; /* Reset margins if they were used for spacing before flex */
+}
+header nav {
+    flex-grow: 1; /* Allow nav to take available space if logo is not centered */
+    display: flex;
+    justify-content: center; /* Center nav links if logo is on left and toggle on right */
+}
+.theme-toggle-container.header-toggle {
+   /* margin-left: auto; /* Pushes to the right if nav is not filling space */
+   /* Or fixed width for nav and let this sit beside it */
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-button {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 10px; /* Adjusted padding */
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em; /* Adjusted base size */
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.theme-toggle-button .theme-icon-header,
+.theme-toggle-button .theme-icon-footer {
+    font-size: 1.1em; /* Make icon slightly larger */
+    /* margin-right: 5px; /* Space if text is also shown - only icon for now */
+}
+
+/* Screen-reader only text */
+.sr-only {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     padding: 0;
+     margin: -1px;
+     overflow: hidden;
+     clip: rect(0, 0, 0, 0);
+     white-space: nowrap;
+     border-width: 0;
+}
+
+/* Footer Toggle Specifics */
+.footer-theme-toggle {
+    margin-top: 15px; /* Space above toggle in footer */
+    padding-top: 15px; /* Space if there's a border above it */
+    border-top: 1px solid var(--light-color); /* Separator within footer */
+    text-align: center;
+}
+
+/* Responsive adjustments for header and toggle */
+@media (max-width: 768px) {
+   header .header-content-wrapper {
+       flex-direction: column;
+       align-items: center;
+       padding: 10px; /* Add padding for stacked header */
+   }
+   header nav {
+        order: 2; /* Nav comes after logo */
+        width: 100%; /* Full width for nav links container */
+   }
+   .theme-toggle-container.header-toggle {
+       order: 1; /* Toggle comes before nav on mobile, or adjust as needed */
+       margin-top: 0;
+       margin-bottom: 10px; /* Space below toggle when stacked */
+       align-self: flex-end; /* Align toggle to the right */
+   }
+   /* Adjust .nav-links for mobile if they are not already full width or centered */
+    .nav-links {
+        width: 100%; /* Ensure nav links take full width for centering */
+        justify-content: center; /* Center the links themselves */
+        margin-bottom: 0; /* Remove bottom margin if stacked */
+    }
+}

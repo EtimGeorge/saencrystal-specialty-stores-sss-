@@ -1,146 +1,206 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const productForm = document.getElementById('productForm');
-    const productTableBody = document.getElementById('productTableBody');
-    const viewProductModal = document.getElementById('viewProductModal');
-    const editProductModal = document.getElementById('editProductModal');
-    const deleteProductModal = document.getElementById('deleteProductModal');
-    const editProductForm = document.getElementById('editProductForm');
-    const confirmDeleteProduct = document.getElementById('confirmDeleteProduct');
-    const cancelDeleteProduct = document.getElementById('cancelDeleteProduct');
+// js/admin/product-management.js
+document.addEventListener('DOMContentLoaded', () => {
+    const productListSection = document.getElementById('product-list-section');
+    const addEditProductSection = document.getElementById('add-edit-product-section');
+    const addNewProductBtn = document.getElementById('add-new-product-btn');
+    const cancelEditBtn = document.getElementById('cancel-edit-btn');
+    const productForm = document.getElementById('product-form');
+    const productsTableBody = document.querySelector('#products-table tbody');
+    const formTitle = document.getElementById('form-title');
+    const productIdField = document.getElementById('product-id'); // Hidden input for ID
 
-    let currentProductId = null;
-    let products = [];
+    // Sample Data
+    let sampleDepartments = [
+        { id: 'dept_1', name: 'Grocery & Food' },
+        { id: 'dept_2', name: 'Bakery' },
+        { id: 'dept_3', name: 'Tech & Electronics'}
+    ];
+    let sampleCategories = {
+        'dept_1': [{ id: 'cat_1a', name: 'Fresh Produce' }, { id: 'cat_1b', name: 'Dry Goods' }],
+        'dept_2': [{ id: 'cat_2a', name: 'Cakes' }, { id: 'cat_2b', name: 'Breads' }],
+        'dept_3': [{ id: 'cat_3a', name: 'Gadgets'}, {id: 'cat_3b', name: 'Audio'}]
+    };
+    // Ensure sampleProducts match the data structure used by the form and table
+    let sampleProducts = [
+        { id: 'prod_1', name: 'Sample Product Alpha', sku: 'SKU001', description: 'Short desc for Alpha', detailedDescription: 'Detailed long description for Alpha.', price: 1200.00, stockQuantity: 150, departmentId: 'dept_1', categoryId: 'cat_1a', imageUrlMain: 'https://via.placeholder.com/50x50.png?text=P1', imageUrls: [], isActive: true, isFeatured: false, departmentName: 'Grocery & Food', categoryName: 'Fresh Produce' },
+        { id: 'prod_2', name: 'Another Product Beta', sku: 'SKU002', description: 'Short desc for Beta', detailedDescription: 'Detailed long description for Beta, very tasty.', price: 3500.00, stockQuantity: 75, departmentId: 'dept_2', categoryId: 'cat_2a', imageUrlMain: 'https://via.placeholder.com/50x50.png?text=P2', imageUrls: [], isActive: false, isFeatured: true, departmentName: 'Bakery', categoryName: 'Cakes' }
+    ];
 
-    // Simulated product data
-    function simulateProductData() {
-        return [
-            { id: 1, name: 'Product 1', category: 'Category A', price: 19529.99, stock: 100 },
-            { id: 0o2, name: 'Product 2', category: 'Category B', price: 29089.99, stock: 50 },
-            { id: 3, name: 'Product 3', category: 'Category A', price: 25899.99, stock: 75 }
-        ];
+    function populateDropdown(selectElement, items, defaultOptionText = 'Select Option') {
+        if (!selectElement) return;
+        selectElement.innerHTML = `<option value="">${defaultOptionText}</option>`;
+        items.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.id;
+            option.textContent = item.name;
+            selectElement.appendChild(option);
+        });
     }
 
-    // Fetch products (simulated)
-    function fetchProducts() {
-        try {
-            // Simulating API call
-            products = simulateProductData();
-            displayProducts();
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        }
+    const departmentSelect = document.getElementById('product-department');
+    const categorySelect = document.getElementById('product-category');
+
+    if (departmentSelect) {
+        populateDropdown(departmentSelect, sampleDepartments, 'Select Department');
     }
 
-    // Display products in the table
-    function displayProducts() {
-        productTableBody.innerHTML = '';
-        products.forEach(product => {
-            const row = document.createElement('tr');
+    if (departmentSelect && categorySelect) {
+        departmentSelect.addEventListener('change', function() { // Use function keyword for 'this' or pass element
+            const selectedDeptId = this.value;
+            const categories = sampleCategories[selectedDeptId] || [];
+            populateDropdown(categorySelect, categories, 'Select Category');
+        });
+    }
+
+    function renderProductsTable() {
+        if (!productsTableBody) return;
+        productsTableBody.innerHTML = '';
+        sampleProducts.forEach(p => {
+            const row = productsTableBody.insertRow();
             row.innerHTML = `
-                <td>${product.id}</td>
-                <td>${product.name}</td>
-                <td>${product.category}</td>
-                <td>&#8358;${product.price.toFixed(2)}</td>
-                <td>${product.stock}</td>
+                <td><img src="${p.imageUrlMain || 'https://via.placeholder.com/50x50.png?text=Img'}" alt="${p.name}" class="table-product-image"></td>
+                <td>${p.name}</td>
+                <td>${p.sku}</td>
+                <td>${p.departmentName}</td>
+                <td>${p.categoryName}</td>
+                <td>₦${p.price.toFixed(2)}</td>
+                <td>${p.stockQuantity}</td>
+                <td><span class="status-${p.isActive ? 'active' : 'inactive'}">${p.isActive ? 'Active' : 'Inactive'}</span></td>
+                <td>${p.isFeatured ? 'Yes' : 'No'}</td>
                 <td>
-                    <button class="view" onclick="viewProduct(${product.id})">View</button>
-                    <button class="edit" onclick="editProduct(${product.id})">Edit</button>
-                    <button class="delete" onclick="deleteProduct(${product.id})">Delete</button>
-                </td>
-            `;
-            productTableBody.appendChild(row);
+                    <button class="btn btn-sm btn-edit" data-product-id="${p.id}">Edit</button>
+                    <button class="btn btn-sm btn-delete btn-danger" data-product-id="${p.id}">Delete</button>
+                </td>`;
+        });
+        attachTableButtonListeners();
+    }
+
+    function showForm(isEdit = false, product = null) {
+        if (!addEditProductSection || !productListSection || !formTitle || !productForm || !productIdField || !departmentSelect || !categorySelect) return;
+
+        addEditProductSection.style.display = 'block';
+        productListSection.style.display = 'none';
+        productForm.reset();
+        productIdField.value = ''; // Clear hidden ID field
+        populateDropdown(departmentSelect, sampleDepartments, 'Select Department'); // Reset dropdowns
+        populateDropdown(categorySelect, [], 'Select Category');
+
+
+        if (isEdit && product) {
+            formTitle.textContent = `Edit Product: ${product.name}`;
+            productIdField.value = product.id; // Set the hidden ID field for submission
+            document.getElementById('product-name').value = product.name;
+            document.getElementById('product-sku').value = product.sku;
+            document.getElementById('product-description').value = product.description || '';
+            document.getElementById('product-detailed-description').value = product.detailedDescription || '';
+            document.getElementById('product-price').value = product.price;
+            document.getElementById('product-stock-quantity').value = product.stockQuantity;
+            departmentSelect.value = product.departmentId;
+
+            const event = new Event('change'); // Trigger change to populate categories
+            departmentSelect.dispatchEvent(event);
+
+            // Set category after categories are populated (use timeout to ensure DOM update)
+            setTimeout(() => {
+                if(categorySelect) categorySelect.value = product.categoryId;
+            }, 0);
+
+            document.getElementById('product-image-main').value = product.imageUrlMain || '';
+            // Assuming product-image-others might be a text input for comma-separated URLs for simplicity here
+            document.getElementById('product-image-others').value = product.imageUrls ? product.imageUrls.join(', ') : '';
+            document.getElementById('product-status').value = String(product.isActive); // Boolean to string for select
+            document.getElementById('product-featured').checked = product.isFeatured;
+        } else {
+            formTitle.textContent = 'Add New Product';
+        }
+    }
+
+    function hideForm() {
+        if (!addEditProductSection || !productListSection || !productForm || !productIdField) return;
+        addEditProductSection.style.display = 'none';
+        productListSection.style.display = 'block';
+        productForm.reset();
+        productIdField.value = '';
+    }
+
+    if (addNewProductBtn) {
+        addNewProductBtn.addEventListener('click', () => showForm(false));
+    }
+    if (cancelEditBtn) {
+        cancelEditBtn.addEventListener('click', hideForm);
+    }
+
+    if (productForm) {
+        productForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(productForm);
+            const submittedData = {};
+            formData.forEach((value, key) => {
+                submittedData[key] = value;
+            });
+
+            // Prepare data object matching sampleProducts structure
+            const productData = {
+                id: submittedData['product-id'] || `prod_${Date.now()}`, // Use existing ID or generate new
+                name: submittedData['product-name'],
+                sku: submittedData['product-sku'],
+                description: submittedData['product-description'],
+                detailedDescription: submittedData['product-detailed-description'],
+                price: parseFloat(submittedData['product-price']),
+                stockQuantity: parseInt(submittedData['product-stock-quantity'], 10),
+                departmentId: submittedData['product-department'],
+                categoryId: submittedData['product-category'],
+                imageUrlMain: submittedData['product-image-main'],
+                imageUrls: submittedData['product-image-others'] ? submittedData['product-image-others'].split(',').map(url => url.trim()) : [],
+                isActive: submittedData['product-status'] === 'true',
+                isFeatured: formData.has('product-featured'), // Checkbox: 'product-featured' is the name attribute
+            };
+
+            const dept = sampleDepartments.find(d => d.id === productData.departmentId);
+            const catList = sampleCategories[productData.departmentId] || [];
+            const cat = catList.find(c => c.id === productData.categoryId);
+            productData.departmentName = dept ? dept.name : 'N/A';
+            productData.categoryName = cat ? cat.name : 'N/A';
+
+            if (submittedData['product-id']) { // If there's an ID, it's an edit
+                const index = sampleProducts.findIndex(p => p.id === submittedData['product-id']);
+                if (index > -1) {
+                    sampleProducts[index] = productData; // Replace with new data
+                    alert(`Product "${productData.name}" updated (simulated).`);
+                }
+            } else { // Add new
+                sampleProducts.push(productData);
+                alert(`Product "${productData.name}" added (simulated).`);
+            }
+            hideForm();
+            renderProductsTable();
         });
     }
 
-    // Add new product
-    productForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const newProduct = {
-            id: products.length + 1,
-            name: document.getElementById('productName').value,
-            category: document.getElementById('productCategory').value,
-            price: parseFloat(document.getElementById('productPrice').value),
-            stock: parseInt(document.getElementById('productStock').value)
-        };
-        products.push(newProduct);
-        displayProducts();
-        productForm.reset();
-    });
+    function attachTableButtonListeners() {
+        if(!productsTableBody) return;
+        productsTableBody.addEventListener('click', function(event) {
+            const targetButton = event.target.closest('button');
+            if (!targetButton) return;
 
-    // View product
-    window.viewProduct = function(id) {
-        const product = products.find(p => p.id === id);
-        const viewProductDetails = document.getElementById('viewProductDetails');
-        viewProductDetails.innerHTML = `
-            <p><strong>ID:</strong> ${product.id}</p>
-            <p><strong>Name:</strong> ${product.name}</p>
-            <p><strong>Category:</strong> ${product.category}</p>
-            <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
-            <p><strong>Stock:</strong> ${product.stock}</p>
-        `;
-        viewProductModal.style.display = 'block';
-    };
+            const productId = targetButton.dataset.productId;
 
-    // Edit product
-    window.editProduct = function(id) {
-        currentProductId = id;
-        const product = products.find(p => p.id === id);
-        document.getElementById('editProductId').value = product.id;
-        document.getElementById('editProductName').value = product.name;
-        document.getElementById('editProductCategory').value = product.category;
-        document.getElementById('editProductPrice').value = product.price;
-        document.getElementById('editProductStock').value = product.stock;
-        editProductModal.style.display = 'block';
-    };
-
-    editProductForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const updatedProduct = {
-            id: currentProductId,
-            name: document.getElementById('editProductName').value,
-            category: document.getElementById('editProductCategory').value,
-            price: parseFloat(document.getElementById('editProductPrice').value),
-            stock: parseInt(document.getElementById('editProductStock').value)
-        };
-        const index = products.findIndex(p => p.id === currentProductId);
-        products[index] = updatedProduct;
-        displayProducts();
-        editProductModal.style.display = 'none';
-    });
-
-    // Delete product
-    window.deleteProduct = function(id) {
-        currentProductId = id;
-        deleteProductModal.style.display = 'block';
-    };
-
-    confirmDeleteProduct.addEventListener('click', function() {
-        products = products.filter(p => p.id !== currentProductId);
-        displayProducts();
-        deleteProductModal.style.display = 'none';
-    });
-
-    cancelDeleteProduct.addEventListener('click', function() {
-        deleteProductModal.style.display = 'none';
-    });
-
-    // Close modals when clicking on the close button or outside the modal
-    document.querySelectorAll('.close').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            viewProductModal.style.display = 'none';
-            editProductModal.style.display = 'none';
-            deleteProductModal.style.display = 'none';
+            if (targetButton.classList.contains('btn-edit')) {
+                const productToEdit = sampleProducts.find(p => p.id === productId);
+                if (productToEdit) showForm(true, productToEdit);
+            } else if (targetButton.classList.contains('btn-delete')) {
+                if (confirm(`Are you sure you want to delete product ID ${productId}? (Simulated)`)) {
+                    sampleProducts = sampleProducts.filter(p => p.id !== productId);
+                    alert(`Product ID ${productId} deleted (simulated).`);
+                    renderProductsTable();
+                }
+            }
         });
-    });
+    }
 
-    window.onclick = function(event) {
-        if (event.target === viewProductModal || event.target === editProductModal || event.target === deleteProductModal) {
-            viewProductModal.style.display = 'none';
-            editProductModal.style.display = 'none';
-            deleteProductModal.style.display = 'none';
-        }
-    };
-
-    // Initial fetch of products
-    fetchProducts();
+    if (productsTableBody) {
+        renderProductsTable(); // Initial render
+    } else {
+        console.warn("Product table body not found for initial render.");
+    }
 });
