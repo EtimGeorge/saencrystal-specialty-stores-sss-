@@ -3,92 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-
+    <title>Admin Dashboard - Saencrystal</title>
     <link rel="stylesheet" href="../css/admin/admin-styles.css">
-
-    <link rel="stylesheet" href="../css/admin/dashboard.css">
-
-   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            
-            <div class="logo">
-                <img src="../assets/images/admin/only-logo.png" alt=""><p>saencrystal <highlight-text>specialty</highlight-text> Stores</p> 
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Saencrystal Admin Panel</h1>
+            <div class="admin-user-info">
+                <span id="admin-username">Admin</span>
+                <button id="admin-logout-btn">Logout</button>
             </div>
-
-            <div class="mobile-nav">
-                
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-                <div class="menu-cancel" id="menu-cancel">
-                    <i class="fas fa-close"></i>
-                </div>
-
-
-             <ul class="nav-links" id="nav-links">
-                <li ""><a href="dashboard.html" class="active">Dashboard</a></li>
-                <li><a href="product-management.html">Product Management</a></li>
-                <li><a href="category-management.html">Category Management</a></li>
-                <li><a href="stock-monitoring.html">Stock Monitoring</a></li>
-                <li><a href="order-management.html">Order Management</a></li>
-                <li><a href="customer-feedback.html">Customer Feedback</a></li>
-                <li><a href="promotional-management.html">Promotional Management</a></li>
-                <li><a href="reports.html">Reports</a></li>
-                <li><a href="notifications.html">Notifications</a></li>
-                <li><a href="index.html"><span>Logout</span></a></li>
-                </ul>
-
-               
-            </div>
+        </header>
+        <nav class="admin-sidebar">
+            <ul>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="product-management.html">Products</a></li>
+                <li><a href="order-management.html">Orders</a></li>
+                <!-- More links to be added in later steps -->
+                <!-- <li><a href="category-management.html">Categories</a></li> -->
+                <!-- <li><a href="user-management.html">Users</a></li> -->
+            </ul>
         </nav>
-    </header>
-    <main>
-        <section class="dashboard-overview">
-            <h1>Dashboard Overview</h1>
-            <div class="overview-cards">
-                <div class="card">
-                    <h2><i class="fas fa-box"></i> Products</h2>
-                    <p id="total-products">Total Products: Loading...</p>
+        <main class="admin-main-content">
+            <section id="dashboard-overview">
+                <h2>Dashboard Overview</h2>
+                <p>Welcome to the admin panel. Basic stats and summaries will appear here.</p>
+                <!-- Placeholder content for dashboard -->
+                <div class="stats-cards">
+                    <div class="stat-card"><h3>Total Products</h3><p id="total-products-stat">0</p></div>
+                    <div class="stat-card"><h3>Total Orders</h3><p id="total-orders-stat">0</p></div>
+                    <div class="stat-card"><h3>Pending Orders</h3><p id="pending-orders-stat">0</p></div>
                 </div>
-                <div class="card">
-                    <h2><i class="fas fa-tags"></i> Categories</h2>
-                    <p id="total-categories">Total Categories: Loading...</p>
-                </div>
-                <div class="card">
-                    <h2><i class="fas fa-cogs"></i> Orders</h2>
-                    <p id="pending-orders">Pending Orders: Loading...</p>
-                </div>
-                <div class="card">
-                    <h2><i class="fas fa-comments"></i> Feedback</h2>
-                    <p id="unread-feedback">Unread Feedback: Loading...</p>
-                </div>
-            </div>
-            <section class="recent-activities">
-                <h2>Recent Activities</h2>
-                <ul id="recent-activities">
-                    <li>Loading recent activities...</li>
-                </ul>
             </section>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Saencrystal Specialty Stores. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="../js/admin/nav-active-state.js"></script>
-
-    <script src="../js/admin/dashboard.js"></script>
-
+        </main>
+    </div>
     <script src="../js/admin/admin.js"></script>
-
+    <!-- Specific dashboard JS if needed later -->
 </body>
 </html>

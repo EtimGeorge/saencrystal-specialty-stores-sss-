@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration - Saencrystal Specialty Stores</title>
+    <link rel="stylesheet" href="../css/client/client-styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="../index.html" title="Home">
+                    <img src="../assets/images/admin/only-logo.png" alt="Saencrystal Specialty Stores Logo">
+                    <p>saencrystal <highlight-text>specialty</highlight-text> Stores</p>
+                </a>
+            </div>
+            <nav>
+                <div class="mobile-nav">
+                    <div id="menu-toggle" class="menu-toggle">☰</div>
+                    <div id="menu-cancel" class="menu-cancel">✕</div>
+                </div>
+                <ul id="nav-links" class="nav-links">
+                    <!-- Nav links will be added by Task 2 -->
+                </ul>
+            </nav>
+            <div class="theme-toggle-container header-toggle">
+                <button id="theme-toggle-header" class="theme-toggle-button" title="Toggle light/dark theme">
+                    <span class="theme-icon-header">☀️</span>
+                    <span class="sr-only">Toggle Theme</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container content-page">
+        <h1>Customer Registration</h1>
+        <p>Create an account to enjoy a personalized shopping experience, track your orders, and more.</p>
+        <form id="customer-register-form" class="contact-form-styled" style="max-width: 450px; margin: 20px auto;">
+            <div class="form-group">
+                <label for="register-fullname">Full Name</label>
+                <input type="text" id="register-fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email Address</label>
+                <input type="email" id="register-email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="register-confirm-password">Confirm Password</label>
+                <input type="password" id="register-confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn">Register (Simulated)</button>
+            <div id="customer-register-error" class="error-message" style="margin-top:15px;"></div>
+        </form>
+        <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="login.html">Login here</a>.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Saencrystal Specialty Stores. All rights reserved.</p>
+            <div class="footer-theme-toggle">
+                <button id="theme-toggle-footer" class="theme-toggle-button" title="Toggle light/dark theme">
+                    <span class="theme-icon-footer">☀️</span>
+                    <span class="sr-only">Toggle Theme</span>
+                </button>
+            </div>
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <a href="delivery-service.html">Delivery Service</a> |
+                <a href="loyalty-program.html">Loyalty Program</a> |
+                <a href="bulk-deals.html">Bulk Deals</a>
+            </div>
+            <div class="footer-social-links">
+                 <h4>Connect With Us</h4>
+                 <a href="https://facebook.com/saencrystal" target="_blank" title="Facebook" class="social-link">FB</a>
+                 <a href="https://instagram.com/saencrystal" target="_blank" title="Instagram" class="social-link">IG</a>
+                 <a href="https://twitter.com/saencrystal" target="_blank" title="Twitter/X" class="social-link">X</a>
+                 <a href="https://linkedin.com/company/saencrystal" target="_blank" title="LinkedIn" class="social-link">LI</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/client/client.js"></script>
+    <script src="../js/client/register.js"></script>
+</body>
+</html>
