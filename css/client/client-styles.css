@@ -156,13 +156,26 @@ highlight-text{
 
 .nav-links a {
   text-decoration: none;
-  color: var(--primary-color); /* Primary color for nav links */
-  font-family: var(--body-font-family); /* Body font for nav items */
-  font-weight: 600; /* Slightly bolder for nav items */
+  color: var(--primary-color); /* Ensures Dark Slate Gray in light mode */
+  font-family: var(--body-font-family);
+  font-weight: 600;
   font-size: 15px;
   transition: color 0.3s ease;
-  text-wrap: wrap;
+  white-space: nowrap; /* Replaced non-standard text-wrap */
+  padding: 5px 0; /* Add some vertical padding for better click area if items are just text */
 }
+
+/* Explicitly ensure auth links get the correct color in light mode */
+/* This is mostly for reinforcement as they should inherit from .nav-links a */
+body:not(.dark-theme) .nav-item-login a,
+body:not(.dark-theme) .nav-item-register a,
+body:not(.dark-theme) .nav-item-profile a,
+body.customer-logged-in:not(.dark-theme) .nav-item-profile a, /* When shown by JS */
+body:not(.dark-theme) .nav-item-logout a,
+body.customer-logged-in:not(.dark-theme) .nav-item-logout a { /* When shown by JS */
+    color: var(--primary-color);
+}
+
 
 .nav-links a:hover {
   color: var(--accent-color); /* Accent color on hover */
@@ -764,8 +777,8 @@ body.dark-theme .nav-links a:hover {
 }
 body.dark-theme .nav-links a.active {
     background-color: var(--accent-color);
-    color: var(--dark-background-color); /* Dark text on light green accent */
-    box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.5);
+    color: var(--dark-background-color);
+    box-shadow: 0 0 8px rgba(var(--accent-color-rgb, var(--dark-accent-color-rgb)), 0.5); /* Fallback for accent-color-rgb */
 }
 body.dark-theme .nav-links .dropdown-menu {
     background-color: var(--secondary-background-color);
@@ -773,11 +786,11 @@ body.dark-theme .nav-links .dropdown-menu {
     border-color: var(--border-color);
 }
 body.dark-theme .nav-links .dropdown-menu li a {
-    color: var(--text-color); /* Was primary-color, now text-color */
+    color: var(--text-color);
 }
 body.dark-theme .nav-links .dropdown-menu li a:hover {
     background-color: var(--accent-color);
-    color: var(--dark-background-color); /* Dark text on light green accent */
+    color: var(--dark-background-color);
 }
 
 
@@ -946,8 +959,22 @@ body.dark-theme .content-page h2 {
 }
 body.dark-theme .contact-form-styled label { color: var(--text-color); } /* Was primary, now general text */
 body.dark-theme .contact-info { border-top-color: var(--dark-border-color); }
-body.dark-theme .contact-info p strong { color: var(--primary-color); } /* Primary is already lighter */
-body.dark-theme .contact-info a { color: var(--accent-color); }
+body.dark-theme .contact-info p strong { color: var(--primary-color); }
+body.dark-theme .contact-info a { color: var(--accent-color); text-decoration: underline; }
+body.dark-theme .contact-info a:hover { color: #81d481; }
+
+
+/* General links within main content for dark theme */
+body.dark-theme main a,
+body.dark-theme .content-page a:not(.btn):not(.social-link):not(.footer-admin-link):not(.category-link) { /* Be more specific to avoid overriding component links */
+    color: var(--accent-color); /* Use the theme's accent color for general links */
+    text-decoration: underline;
+}
+body.dark-theme main a:hover,
+body.dark-theme .content-page a:not(.btn):not(.social-link):not(.footer-admin-link):not(.category-link):hover {
+    color: #81d481; /* Lighter green for hover, or adjust as needed */
+}
+
 
 /* Admin login page specific if it uses client-styles directly */
 body.admin-login-page.dark-theme {
@@ -999,32 +1026,48 @@ body.dark-theme .footer-social-links {
 .footer-social-links h4 {
     font-size: 1.1em;
     margin-bottom: 10px;
-    color: var(--light-text-color); /* Light text on dark primary bg */
+    color: var(--light-text-color); /* Light text on dark primary bg (light theme footer) */
 }
 body.dark-theme .footer-social-links h4 {
+    /* Dark theme footer bg is --primary-color (#8FBC8F), text is --secondary-background-color (#1e1e1e) */
     color: var(--secondary-background-color); /* Dark text on light primary bg */
 }
 
 .footer-social-links .social-link {
-    display: inline-block;
+    display: inline-flex; /* Align icon and sr-only text if needed, good for icon centering */
+    align-items: center;
+    justify-content: center;
     margin: 0 8px;
-    padding: 5px 8px;
-    color: var(--light-text-color); /* Light text on dark primary bg */
+    padding: 6px; /* Adjust padding for icons */
+    color: var(--light-text-color);
     text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9em;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    transition: color 0.3s, border-color 0.3s;
+    border: 1px solid transparent; /* Keep transparent or themed */
+    border-radius: 50%; /* Make it circular for icons */
+    width: 38px;  /* Example fixed size for circular button (increased slightly) */
+    height: 38px; /* Example fixed size for circular button (increased slightly) */
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
+
+.footer-social-links .social-link svg {
+    width: 20px;  /* Control SVG size within the button */
+    height: 20px;
+    fill: currentColor; /* Make SVG color inherit from <a> tag's color property */
+}
+
 body.dark-theme .footer-social-links .social-link {
-    color: var(--secondary-background-color); /* Dark text on light primary bg */
+    color: var(--secondary-background-color);
 }
 
 .footer-social-links .social-link:hover {
-    /* Accent color is globally managed by body.dark-theme for its value */
     color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover for light theme footer */
+    /* border-color: var(--accent-color); */ /* Optional: border on hover */
+}
+
+body.dark-theme .footer-social-links .social-link:hover {
+    color: var(--dark-accent-color);
+    background-color: rgba(0, 0, 0, 0.1); /* Subtle background on hover for dark theme footer */
+    /* border-color: var(--dark-accent-color); */ /* Optional */
 }
 /* === End of Footer Social Link Styles === */
 
